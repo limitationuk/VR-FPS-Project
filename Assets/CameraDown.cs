@@ -15,21 +15,21 @@ public class CameraDown : MonoBehaviour
     {
         float down = xInput.action.ReadValue<float>();
 
-        Vector3 currentPosition = cameraPos.position;
+        Vector3 currentPosition = cameraPos.parent.position;
 
         // y값만 조정하여 새로운 위치 벡터를 생성
-        Vector3 newPosition = new Vector3(currentPosition.x, 0.7f, currentPosition.z);
+        Vector3 newPosition = cameraPos.localPosition;
 
         if (down == 1)
         {
-            cameraPos.position = newPosition;
+            newPosition.y = 0.7f;
             Debug.Log(down);
         }
         else
         {
-            cameraPos.position = new Vector3(currentPosition.x, 1.36144f, currentPosition.z);
+            newPosition.y = 1.36144f;
         }
-        
-        
+
+        cameraPos.localPosition = newPosition;
     }
 }
