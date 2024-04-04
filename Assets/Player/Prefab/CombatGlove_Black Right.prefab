@@ -136,9 +136,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4064458542409192}
-  - component: {fileID: -3083988929706632369}
-  - component: {fileID: -7914066046517665429}
   - component: {fileID: 3547843283396094414}
+  - component: {fileID: -7914066046517665429}
   m_Layer: 0
   m_Name: CombatGlove_Black Right
   m_TagString: Untagged
@@ -163,19 +162,19 @@ Transform:
   - {fileID: 4608101077126270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &-3083988929706632369
+--- !u!114 &3547843283396094414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268266498752498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5339b58235cffca40be34d74dbe4c95c, type: 3}
+  m_Script: {fileID: 11500000, guid: b1200055d1652004aa4babcc67cfa7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graber: {fileID: 0}
+  rightGraber: {fileID: 0}
   gripInput: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   triggerInput: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   thumbInput: {fileID: -5392393118497770399, guid: 4c907a68ce637c84f9c9b56ffad8ffa0, type: 3}
@@ -201,23 +200,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3547843283396094414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268266498752498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1200055d1652004aa4babcc67cfa7da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightGraber: {fileID: 0}
-  gripInput: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  triggerInput: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  thumbInput: {fileID: -5392393118497770399, guid: 4c907a68ce637c84f9c9b56ffad8ffa0, type: 3}
-  animator: {fileID: -7914066046517665429}
 --- !u!1 &1338533787072008
 GameObject:
   m_ObjectHideFlags: 0

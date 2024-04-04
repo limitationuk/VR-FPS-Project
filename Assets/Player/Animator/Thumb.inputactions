@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "RightButton",
+                    "type": "Button",
+                    "id": "efaff9ba-9f3e-4955-b845-b04fe4d29ce0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -24,6 +33,17 @@
                     "processors": "",
                     "groups": "New control scheme;New control scheme1;New control scheme2",
                     "action": "RightThumb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c2a7ef8-495e-45ec-bb5b-892b4fd76d5f",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme;New control scheme1;New control scheme2",
+                    "action": "RightButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -50,6 +70,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "2DAxisClick",
+                    "type": "Button",
+                    "id": "f615b473-5f3b-4475-aa46-cf2a8d373aa9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -72,6 +101,17 @@
                     "processors": "",
                     "groups": "New control scheme;New control scheme1;New control scheme2",
                     "action": "LeftButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68376a0f-0445-4b5d-9243-ee68ed97f04a",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme;New control scheme1;New control scheme2",
+                    "action": "2DAxisClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

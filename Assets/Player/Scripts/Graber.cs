@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -7,41 +6,56 @@ public class Graber : MonoBehaviour
 {
     [SerializeField] bool objectGrip;
     [SerializeField] bool gunGrip;
+    [SerializeField] Collider interactableCollider;
+
+
+
 
     public bool ObjectGrip => objectGrip;
     public bool GunGrip => gunGrip;
-    
+
     public void Grab(SelectEnterEventArgs args)
     {
         IXRInteractable interactable = args.interactableObject;
 
 
-        if (((1<<interactable.interactionLayers) & (1<<InteractionLayerMask.GetMask("Gun"))) != 0)//interactable.transform.gameObject.name == "Gun"
-        {                        //비트마스크 
+        if (!gunGrip && ((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)//interactable.transform.gameObject.name == "Gun"
+        {
             gunGrip = true;
-           // Debug.Log(1 );
         }
-        else
+        else if (!objectGrip)
         {
             objectGrip = true;
-            //Debug.Log(2);
         }
     }
-  
 
     public void UnGrab(SelectExitEventArgs args)
     {
-        IXRInteractable interactable = args.interactableObject;
-        if (((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)// (interactable.transform.gameObject.layer == InteractionLayerMask.NameToLayer("Gun"))
+        IXRInteractable interactable = args.interactableObject; 
+        GameObject interactableGameObject = interactable.colliders[0].gameObject;
+
+        interactableCollider = interactableGameObject.gameObject.GetComponent<Collider>();
+        StartCoroutine(ColOff());
+
+        if (gunGrip && ((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)// (interactable.transform.gameObject.layer == InteractionLayerMask.NameToLayer("Gun"))
         {
             gunGrip = false;
-
         }
-        else
+        else if (objectGrip)
         {
             objectGrip = false;
         }
     }
 
 
+    IEnumerator ColOff()
+    {
+        interactableCollider.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        interactableCollider.enabled = true;
+    }
+
+    
+
 }
+

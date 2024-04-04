@@ -36,16 +36,16 @@ public class HandController : MonoBehaviour
         float thumb = thumbInput.action.ReadValue<float>();
         if (graber.GunGrip)
         {
-            animator.SetFloat("GunGrip", grip);
+            animator.SetBool("GunGrip", true);
         }
         else if (graber.ObjectGrip)
         {
-            animator.SetFloat("ObjectGrip", grip);
+            animator.SetBool("ObjectGrip", true);
         }
         else
         {
-            animator.SetFloat("GunGrip", 0);
-            animator.SetFloat("ObjectGrip", 0);
+            animator.SetBool("GunGrip", false);
+            animator.SetBool("ObjectGrip", false);
             animator.SetFloat("Grip", grip);
             animator.SetFloat("Trigger", trigger);
             animator.SetFloat("Thumb", thumb);
