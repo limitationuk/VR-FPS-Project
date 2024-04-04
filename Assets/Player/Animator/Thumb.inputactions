@@ -1,0 +1,156 @@
+{
+    "name": "Thumb",
+    "maps": [
+        {
+            "name": "RightThumb",
+            "id": "1c681429-0112-48fe-aac8-ae1137de44e8",
+            "actions": [
+                {
+                    "name": "RightThumb",
+                    "type": "Value",
+                    "id": "2551ff8e-4071-46ae-98f6-39d2b21db15b",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RightButton",
+                    "type": "Button",
+                    "id": "efaff9ba-9f3e-4955-b845-b04fe4d29ce0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b7d7cb50-5c01-4fa0-b2a1-b41bf4916d93",
+                    "path": "<XRController>{RightHand}/{PrimaryTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme;New control scheme1;New control scheme2",
+                    "action": "RightThumb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c2a7ef8-495e-45ec-bb5b-892b4fd76d5f",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme;New control scheme1;New control scheme2",
+                    "action": "RightButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "LeftThumb",
+            "id": "b7b1e7f6-9a25-4504-80b4-2740d5edb2a9",
+            "actions": [
+                {
+                    "name": "LeftThumb",
+                    "type": "Value",
+                    "id": "1902c846-ab44-4799-a5f9-a88a23689d09",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LeftButton",
+                    "type": "Button",
+                    "id": "65938b97-5981-4281-9086-3a6af2b6857a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "2DAxisClick",
+                    "type": "Button",
+                    "id": "f615b473-5f3b-4475-aa46-cf2a8d373aa9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2a20a921-4aea-4ba9-ac6b-cbef0dc7bcfb",
+                    "path": "<XRController>{LeftHand}/{PrimaryTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme;New control scheme1;New control scheme2",
+                    "action": "LeftThumb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "178d6adf-b1d2-4b76-b393-5a6b0f241175",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme;New control scheme1;New control scheme2",
+                    "action": "LeftButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68376a0f-0445-4b5d-9243-ee68ed97f04a",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme;New control scheme1;New control scheme2",
+                    "action": "2DAxisClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "New control scheme",
+            "bindingGroup": "New control scheme",
+            "devices": [
+                {
+                    "devicePath": "<XRController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "New control scheme1",
+            "bindingGroup": "New control scheme1",
+            "devices": [
+                {
+                    "devicePath": "<OculusTouchController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "New control scheme2",
+            "bindingGroup": "New control scheme2",
+            "devices": [
+                {
+                    "devicePath": "<XRSimulatedController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
