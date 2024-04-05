@@ -6,7 +6,8 @@ public class Graber : MonoBehaviour
 {
     [SerializeField] bool objectGrip;
     [SerializeField] bool gunGrip;
-    [SerializeField] Collider interactableCollider;
+    //[SerializeField] Collider interactableCollider;
+   
 
 
 
@@ -16,6 +17,7 @@ public class Graber : MonoBehaviour
 
     public void Grab(SelectEnterEventArgs args)
     {
+
         IXRInteractable interactable = args.interactableObject;
 
 
@@ -32,10 +34,10 @@ public class Graber : MonoBehaviour
     public void UnGrab(SelectExitEventArgs args)
     {
         IXRInteractable interactable = args.interactableObject; 
-        GameObject interactableGameObject = interactable.colliders[0].gameObject;
+        //GameObject interactableGameObject = interactable.colliders[0].gameObject;
 
-        interactableCollider = interactableGameObject.gameObject.GetComponent<Collider>();
-        StartCoroutine(ColOff());
+        //interactableCollider = interactableGameObject.gameObject.GetComponent<Collider>();
+        //StartCoroutine(ColOff());
 
         if (gunGrip && ((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)// (interactable.transform.gameObject.layer == InteractionLayerMask.NameToLayer("Gun"))
         {
@@ -48,12 +50,12 @@ public class Graber : MonoBehaviour
     }
 
 
-    IEnumerator ColOff()
-    {
-        interactableCollider.enabled = false;
-        yield return new WaitForSeconds(0.5f);
-        interactableCollider.enabled = true;
-    }
+    //IEnumerator ColOff()
+    //{
+    //    interactableCollider.enabled = false;
+    //    yield return new WaitForSeconds(0.5f);
+    //    interactableCollider.enabled = true;
+    //}
 
     
 

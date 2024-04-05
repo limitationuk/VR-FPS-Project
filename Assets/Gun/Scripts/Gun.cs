@@ -20,6 +20,7 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         //Manager.Pool.CreatePool(hitEffectPrefab, 5, 5);
+        StartCoroutine(Auto());//삭제
     }
 
     public void Fire()
@@ -53,10 +54,15 @@ public class Gun : MonoBehaviour
                     enemy = hitInfo.collider.GetComponentInParent<Enemy>();
                     enemy.TakeDamage(damage);  // 총의 기본 damage 적용
                 }
+                else if ((1 << hitInfo.collider.gameObject.layer) == LayerMask.GetMask("Player"))//삭제
+                {
+                    Player player = hitInfo.collider.GetComponent<Player>();
+                    player.TakeDamage();
+                }
 
                 //ParticleSystem effect = Instantiate(hitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));  // 총알자국 파티클
-                PooledObject hitEffect = Manager.Pool.GetPool(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
-                hitEffect.transform.parent = hitInfo.transform;
+        //        PooledObject hitEffect = Manager.Pool.GetPool(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+        //        hitEffect.transform.parent = hitInfo.transform;
 
                 Rigidbody rigid = hitInfo.collider.GetComponent<Rigidbody>();
                 if (rigid != null)
@@ -70,14 +76,23 @@ public class Gun : MonoBehaviour
                 Debug.Log("안 맞음");
             }
 
-            StartCoroutine(ShootCoolTimeRoutine());
+        //    StartCoroutine(ShootCoolTimeRoutine());
         }
     }
 
-    IEnumerator ShootCoolTimeRoutine()
+    //IEnumerator ShootCoolTimeRoutine()
+    //{
+    //    isShootable = false;
+    //    yield return new WaitForSeconds(shootCoolTime);
+    //    isShootable = true;
+    //}
+
+    IEnumerator Auto()//삭제
     {
-        isShootable = false;
-        yield return new WaitForSeconds(shootCoolTime);
-        isShootable = true;
+        while (true)
+        {
+            Fire();
+            yield return new WaitForSeconds(1);
+        }
     }
 }

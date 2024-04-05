@@ -8,6 +8,9 @@ public class SceneManager : Singleton<SceneManager>
     [SerializeField] Image fade;
     [SerializeField] Slider loadingBar;
     [SerializeField] float fadeTime;
+    [SerializeField] GameObject fadeIn;
+    [SerializeField] GameObject fadeOut;
+
 
     private BaseScene curScene;
 
@@ -36,8 +39,9 @@ public class SceneManager : Singleton<SceneManager>
 
     IEnumerator LoadingRoutine(string sceneName)
     {
-        fade.gameObject.SetActive(true);
-        yield return FadeOut();
+        fadeIn.gameObject.SetActive(true);
+        // fade.gameObject.SetActive(true);
+        // yield return FadeOut();
 
         Manager.Pool.ClearPool();
         Manager.Sound.StopSFX();
@@ -46,25 +50,26 @@ public class SceneManager : Singleton<SceneManager>
         Manager.UI.CloseInGameUI();
 
         Time.timeScale = 0f;
-        loadingBar.gameObject.SetActive(true);
+        //loadingBar.gameObject.SetActive(true);
 
         AsyncOperation oper = UnitySceneManager.LoadSceneAsync(sceneName);
-        while (oper.isDone == false)
-        {
-            loadingBar.value = oper.progress;
-            yield return null;
-        }
+        //while (oper.isDone == false)
+        //{
+        //    loadingBar.value = oper.progress;
+        //    yield return null;
+        //}
 
         Manager.UI.EnsureEventSystem();
 
         BaseScene curScene = GetCurScene();
         yield return curScene.LoadingRoutine();
 
-        loadingBar.gameObject.SetActive(false);
+        //loadingBar.gameObject.SetActive(false);
         Time.timeScale = 1f;
 
-        yield return FadeIn();
-        fade.gameObject.SetActive(false);
+        // yield return FadeIn();
+        // fade.gameObject.SetActive(false);
+        fadeOut.gameObject.SetActive(true);
     }
 
     IEnumerator FadeOut()
