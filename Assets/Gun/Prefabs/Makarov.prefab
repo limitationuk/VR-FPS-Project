@@ -271,6 +271,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1862464475931193154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4719524249341348555}
+  m_Layer: 0
+  m_Name: Attach
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4719524249341348555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862464475931193154}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0426, z: 0.0179}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4981828810191459761}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3674184737355891638
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +316,7 @@ GameObject:
   - component: {fileID: 4404275987773999563}
   - component: {fileID: 3109535683384552289}
   - component: {fileID: 7232750851396647621}
+  - component: {fileID: 5248926527253666105}
   m_Layer: 0
   m_Name: Makarov
   m_TagString: Untagged
@@ -302,7 +334,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.6458913, y: 0.6458913, z: -0.28779233, w: 0.28779233}
   m_LocalPosition: {x: 1.613, y: 0.85, z: 3.437}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8745434247265074016}
@@ -310,6 +342,7 @@ Transform:
   - {fileID: 4189341691854972732}
   - {fileID: 875505387472937609}
   - {fileID: 7895944793537433139}
+  - {fileID: 4719524249341348555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 131.967, z: -90}
 --- !u!33 &3169832030556649621
@@ -401,13 +434,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0780ab5cbb1d14ba2f408eaa6328f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 4189341691854972732}
+  weaponType: 0
   maxDistance: 500
   damage: 5
-  shootFlash: {fileID: 6006584858920337008}
-  hitEffectPrefab: {fileID: -587173094390138357, guid: 3b31aba5579b9214eaff3dd3f50bdc72, type: 3}
-  shootCoolTime: 0.5
   isShootable: 1
+  shootCoolTime: 0.5
+  isContinuousFireable: 0
+  fireRate: 0
+  magazine: {fileID: 0}
+  ammoCount: 0
+  muzzleFlash: {fileID: 198234346748616026, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
+  hitEffectPrefab: {fileID: -587173094390138357, guid: 3b31aba5579b9214eaff3dd3f50bdc72, type: 3}
+  muzzlePoint: {fileID: 4189341691854972732}
 --- !u!114 &7232750851396647621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,7 +464,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 2
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -522,7 +560,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 4719524249341348555}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -572,6 +610,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &5248926527253666105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3674184737355891638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcb4b14e3ea06d43a972a32b8512d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGun: {fileID: 3109535683384552289}
+  currentFireRate: 0
 --- !u!1 &5504933529951326833
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4189341691854972732}
   m_Layer: 0
-  m_Name: ShootPoint
+  m_Name: MuzzlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -719,7 +771,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1743301284569550, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
       propertyPath: m_Name
-      value: ShootFlash
+      value: MuzzleFlash
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094106582842296, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4300533007854612, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
       propertyPath: m_LocalScale.x
@@ -817,10 +873,5 @@ PrefabInstance:
 --- !u!4 &5878516118327594814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4300533007854612, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
-  m_PrefabInstance: {fileID: 5880548878059840298}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6006584858920337008 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198234346748616026, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
   m_PrefabInstance: {fileID: 5880548878059840298}
   m_PrefabAsset: {fileID: 0}

@@ -1,33 +1,63 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+public enum WeaponType
+{
+    Pistol,
+    Rifle,
+}
 
 public class Gun : MonoBehaviour
 {
     // 탄창 수, 재장전 시간, 연사 속도, 데미지 커스텀
 
-    [SerializeField] Transform shootPoint;
-    [SerializeField] float maxDistance;
-    [SerializeField] int damage;
-    [SerializeField] ParticleSystem shootFlash;
-    //[SerializeField] ParticleSystem hitEffect;
+    [Header("총 속성")]
 
+    [Header("총 유형")]
+    public WeaponType weaponType;
+
+    [Header("총 최대 사거리")]
+    [SerializeField] float maxDistance;
+
+    [Header("총 데미지")]
+    [SerializeField] int damage;
+
+    [Header("사격) 사격가능 여부 / 쿨타임")]
+    [SerializeField] bool isShootable;
+    [SerializeField] float shootCoolTime;
+
+    [Header("연사) 연사가능 여부 / 속도")]
+    public bool isContinuousFireable;
+    public float fireRate;
+
+    [Header("탄창/탄약-----")]
+    [SerializeField] GameObject magazine;
+    [SerializeField] int ammoCount;
+
+    [Space(30)]
+    [Header("총 이펙트")]
+
+    [Header("총구 섬광")]
+    [SerializeField] ParticleSystem muzzleFlash;
+
+    [Header("총알 스파이크 - 물체")]
+
+    [Header("총알 스파이크 - 사람")]
+
+    [Header("탄흔")]
     [SerializeField] PooledObject hitEffectPrefab;
 
-    [SerializeField] float shootCoolTime;
-    [SerializeField] bool isShootable;
+    // private
+    [SerializeField] Transform muzzlePoint;
+    //[SerializeField] ParticleSystem hitEffect;
 
-    private void Start()
-    {
-        //Manager.Pool.CreatePool(hitEffectPrefab, 5, 5);
-    }
-
+    // 사격
     public void Fire()
     {
         if (isShootable)
         {
-            shootFlash.Play();  // 총구 파티클
-            bool isRay = Physics.Raycast(shootPoint.position, shootPoint.forward, out RaycastHit hitInfo, maxDistance);
+            muzzleFlash.Play();  // 총구 파티클
+            bool isRay = Physics.Raycast(muzzlePoint.position, muzzlePoint.forward, out RaycastHit hitInfo, maxDistance);
 
             //hitInfo.distance  // 맞았을 때 Ray 쏜 거리
             //hitInfo.collider.gameObject.name  // 어떤 물체에 부딪혔는지
@@ -36,7 +66,7 @@ public class Gun : MonoBehaviour
 
             if (isRay)
             {
-                Debug.DrawRay(shootPoint.position, shootPoint.forward * hitInfo.distance, Color.red, 0.3f);  // Ray 그려주기
+                Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward * hitInfo.distance, Color.red, 0.3f);  // Ray 그려주기
 
                 Enemy enemy = hitInfo.collider.GetComponent<Enemy>();  // 적 컴포넌트 가져와서
 
@@ -54,19 +84,20 @@ public class Gun : MonoBehaviour
                     enemy.TakeDamage(damage);  // 총의 기본 damage 적용
                 }
 
-                //ParticleSystem effect = Instantiate(hitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));  // 총알자국 파티클
+                //ParticleSystem effect = Instantiate(hitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));  // 총알자국 파티클 (투사체 사용할 때)
                 PooledObject hitEffect = Manager.Pool.GetPool(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
                 hitEffect.transform.parent = hitInfo.transform;
 
+                // 넉백
                 Rigidbody rigid = hitInfo.collider.GetComponent<Rigidbody>();
                 if (rigid != null)
                 {
-                    rigid.AddForceAtPosition(-hitInfo.normal * 1f, hitInfo.point, ForceMode.Impulse);  // 넉백
+                    rigid.AddForceAtPosition(-hitInfo.normal * 0.1f, hitInfo.point, ForceMode.Impulse);
                 }
             }
             else
             {
-                Debug.DrawRay(shootPoint.position, shootPoint.forward * maxDistance, Color.red, 0.3f);
+                Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward * maxDistance, Color.red, 0.3f);
                 Debug.Log("안 맞음");
             }
 
@@ -74,10 +105,13 @@ public class Gun : MonoBehaviour
         }
     }
 
+    // 사격쿨타임 코루틴
     IEnumerator ShootCoolTimeRoutine()
     {
         isShootable = false;
         yield return new WaitForSeconds(shootCoolTime);
         isShootable = true;
     }
+
+    // 탄창, 탄약 계산
 }

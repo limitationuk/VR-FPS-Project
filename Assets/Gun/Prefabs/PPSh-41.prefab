@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 118524324918729398}
   - component: {fileID: 8939145211139793411}
   - component: {fileID: 1205501164201031648}
+  - component: {fileID: 8523978363194147006}
   m_Layer: 0
   m_Name: PPSh-41
   m_TagString: Untagged
@@ -219,7 +220,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.6178083, y: 0.6178083, z: -0.34396648, w: 0.34396648}
   m_LocalPosition: {x: 2.477, y: 0.85, z: 3.629}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8582482768560163119}
@@ -227,6 +228,7 @@ Transform:
   - {fileID: 7697105245150675123}
   - {fileID: 2701407415369896011}
   - {fileID: 5937206763480262358}
+  - {fileID: 6245823509831003512}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 121.786, z: -90}
 --- !u!33 &8912799259580963277
@@ -318,13 +320,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0780ab5cbb1d14ba2f408eaa6328f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 7697105245150675123}
+  weaponType: 1
   maxDistance: 500
   damage: 10
-  shootFlash: {fileID: 1796033663266977119}
-  hitEffectPrefab: {fileID: -587173094390138357, guid: 3b31aba5579b9214eaff3dd3f50bdc72, type: 3}
-  shootCoolTime: 0
   isShootable: 1
+  shootCoolTime: 0
+  isContinuousFireable: 0
+  fireRate: 0
+  magazine: {fileID: 0}
+  ammoCount: 0
+  muzzleFlash: {fileID: 198234346748616026, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
+  hitEffectPrefab: {fileID: -587173094390138357, guid: 3b31aba5579b9214eaff3dd3f50bdc72, type: 3}
+  muzzlePoint: {fileID: 7697105245150675123}
 --- !u!114 &1205501164201031648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +350,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 2
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -439,7 +446,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 6245823509831003512}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -489,6 +496,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &8523978363194147006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839587688777232288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcb4b14e3ea06d43a972a32b8512d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGun: {fileID: 8939145211139793411}
+  currentFireRate: 0.2
 --- !u!1 &1490820138354980148
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7697105245150675123}
   m_Layer: 0
-  m_Name: ShootPoint
+  m_Name: MuzzlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,6 +645,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1883570348131566609}
+  m_Father: {fileID: 6906343916080926036}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6654029244882207490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6245823509831003512}
+  m_Layer: 0
+  m_Name: Attach
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6245823509831003512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654029244882207490}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0765, z: 0.0143}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 6906343916080926036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8165024836754625988
@@ -719,7 +771,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1743301284569550, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
       propertyPath: m_Name
-      value: ShootFlash
+      value: MuzzleFlash
       objectReference: {fileID: 0}
     - target: {fileID: 4300533007854612, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
       propertyPath: m_LocalScale.x
@@ -814,11 +866,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
---- !u!198 &1796033663266977119 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198234346748616026, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
-  m_PrefabInstance: {fileID: 1886038540573239301}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1883570348131566609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4300533007854612, guid: f1b182927d920924f97e53ab7173ddd6, type: 3}
