@@ -3,14 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Gun
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Gun
   - Water
   - UI
+  - GunSocket
+  - Player
   - 
   - 
   - 
@@ -33,10 +36,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Body
+  - Head
   m_SortingLayers:
   - name: Default
     uniqueID: 0
