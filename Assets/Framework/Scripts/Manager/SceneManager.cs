@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
@@ -8,8 +9,24 @@ public class SceneManager : Singleton<SceneManager>
     [SerializeField] Image fade;
     [SerializeField] Slider loadingBar;
     [SerializeField] float fadeTime;
+    [SerializeField] GameObject fadeIn;
+    [SerializeField] GameObject fadeOut;
+    [SerializeField] Graber graber;
+    [SerializeField] RightGraber rightGraber;
+
 
     private BaseScene curScene;
+    private void Start()
+    {
+       
+    }
+    private void Update()
+    {
+        fadeIn = GameObject.Find("ScreenEffect").transform.Find("FadeIn").gameObject;
+        fadeOut = GameObject.Find("ScreenEffect").transform.Find("FadeOut").gameObject;
+        graber = GameObject.FindObjectOfType<Graber>();
+        rightGraber = GameObject.FindObjectOfType<RightGraber>();
+    }
 
     public BaseScene GetCurScene()
     {
@@ -36,8 +53,12 @@ public class SceneManager : Singleton<SceneManager>
 
     IEnumerator LoadingRoutine(string sceneName)
     {
-        fade.gameObject.SetActive(true);
-        yield return FadeOut();
+        graber.SceneChange = true;
+        rightGraber.SceneChange = true;
+
+        fadeIn.gameObject.SetActive(true);
+       fade.gameObject.SetActive(true);
+       yield return FadeOut();
 
         Manager.Pool.ClearPool();
         Manager.Sound.StopSFX();
@@ -46,7 +67,7 @@ public class SceneManager : Singleton<SceneManager>
         Manager.UI.CloseInGameUI();
 
         Time.timeScale = 0f;
-        loadingBar.gameObject.SetActive(true);
+       // loadingBar.gameObject.SetActive(true);
 
         AsyncOperation oper = UnitySceneManager.LoadSceneAsync(sceneName);
         while (oper.isDone == false)
@@ -60,11 +81,35 @@ public class SceneManager : Singleton<SceneManager>
         BaseScene curScene = GetCurScene();
         yield return curScene.LoadingRoutine();
 
-        loadingBar.gameObject.SetActive(false);
+       // loadingBar.gameObject.SetActive(false);
         Time.timeScale = 1f;
+
+        if (rightGraber.DirectInteractable != null)
+        {
+            rightGraber.Manager.SelectEnter(rightGraber.DirectInteractor, rightGraber.DirectInteractable);
+        }
+        if (graber.DirectInteractable != null)
+        {
+            graber.Manager.SelectEnter(graber.DirectInteractor, graber.DirectInteractable);
+        }
+
+
+
+        fadeOut.gameObject.SetActive(true);
+
+
+
 
         yield return FadeIn();
         fade.gameObject.SetActive(false);
+        yield return null;
+
+        
+
+       
+
+        graber.SceneChange = false;
+        rightGraber.SceneChange = false;
     }
 
     IEnumerator FadeOut()

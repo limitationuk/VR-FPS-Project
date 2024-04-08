@@ -12,6 +12,8 @@ public class CameraDown : MonoBehaviour
     [SerializeField] Transform cameraPos;
     [SerializeField] Vector3 newPosition;
     [SerializeField] bool isDown;
+    [SerializeField] bool isDie;
+
 
     private void OnEnable()
     {
@@ -26,22 +28,27 @@ public class CameraDown : MonoBehaviour
 
     void LateUpdate()
     {
-        float down = thumbInput.action.ReadValue<float>();
+        if (!isDie)
+        {
+            float down = thumbInput.action.ReadValue<float>();
 
         Vector3 currentPosition = cameraPos.parent.position;
 
         newPosition = cameraPos.localPosition;
+        
+            if ((newPosition.y > 0.5f) && down == 1)
+            {
+                dynamicMoveProvider.moveSpeed = 0.5f;
+                StartCoroutine(Down());
+            }
+            else if ((newPosition.y < 1.36144f) && down == 0)
+            {
+                dynamicMoveProvider.moveSpeed = 1f;
+                StartCoroutine(UP());
+            }
+        }
+        
 
-        if ((newPosition.y > 0.5f) && down == 1)
-        {
-            dynamicMoveProvider.moveSpeed = 0.5f;
-            StartCoroutine(Down());
-        }
-        else if ((newPosition.y < 1.36144f) && down == 0)//1.36144f
-        {
-            dynamicMoveProvider.moveSpeed = 1f;
-            StartCoroutine(UP());
-        }
         cameraPos.localPosition = newPosition;
 
     }
@@ -73,6 +80,51 @@ public class CameraDown : MonoBehaviour
             {     
                 newPosition.y = 1.36144f;
                 break;
+
+            }
+        }
+    }
+
+    public void DieRoutineStart() 
+    {
+        StartCoroutine(DieRoutine());
+    }
+
+    IEnumerator DieRoutine()
+    {
+        isDie = true;
+
+        while (true)
+        {
+            Debug.Log("1");
+            newPosition.y -= 0.02f;
+            yield return new WaitForSecondsRealtime(0.02f);
+
+            if (newPosition.y <= 0.5f)
+            {
+                
+                newPosition.y = 0.5f;
+
+                while (true)
+                {
+                    newPosition.y += 0.02f;
+                    yield return new WaitForSecondsRealtime(0.02f);
+
+                    if (newPosition.y >= 0.6f)
+                    {
+                        while (true)
+                        {
+                            newPosition.y -= 0.02f;
+                            yield return new WaitForSecondsRealtime(0.02f);
+                            if (newPosition.y <= 0.1f)
+                            {
+                                yield return new WaitForSecondsRealtime(2f);
+                                isDie = false;
+                                break;
+                            }
+                        }
+                    }
+                }
 
             }
         }
