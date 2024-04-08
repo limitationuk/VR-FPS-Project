@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class autoGun : MonoBehaviour
 {
     // 탄창 수, 재장전 시간, 연사 속도, 데미지 커스텀
 

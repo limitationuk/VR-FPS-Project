@@ -6,11 +6,20 @@ public class Graber : MonoBehaviour
 {
     [SerializeField] bool objectGrip;
     [SerializeField] bool gunGrip;
+    [SerializeField] XRInteractionManager manager;
+    [SerializeField] IXRSelectInteractor directInteractor;
+    [SerializeField] IXRSelectInteractable directInteractable;
+    [SerializeField] bool sceneChange;
+
+    public XRInteractionManager Manager => manager;
+    public IXRSelectInteractor DirectInteractor { get => directInteractor; set => directInteractor = value; }
+    public IXRSelectInteractable DirectInteractable { get => directInteractable; set => directInteractable = value; }
+    public bool SceneChange { get => sceneChange; set => sceneChange = value; }
     //[SerializeField] Collider interactableCollider;
-   
-
-
-
+    private void Start()
+    {
+        directInteractor = GetComponent<XRDirectInteractor>();
+    }
 
     public bool ObjectGrip => objectGrip;
     public bool GunGrip => gunGrip;
@@ -18,7 +27,8 @@ public class Graber : MonoBehaviour
     public void Grab(SelectEnterEventArgs args)
     {
 
-        IXRInteractable interactable = args.interactableObject;
+        IXRSelectInteractable interactable = args.interactableObject;
+        directInteractable = interactable;
 
 
         if (!gunGrip && ((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)//interactable.transform.gameObject.name == "Gun"
@@ -33,7 +43,16 @@ public class Graber : MonoBehaviour
 
     public void UnGrab(SelectExitEventArgs args)
     {
-        IXRInteractable interactable = args.interactableObject; 
+        IXRSelectInteractable interactable = args.interactableObject;
+
+        if (!sceneChange)
+        {
+            directInteractable = null;
+
+        }
+
+
+        // IXRInteractable interactable = args.interactableObject;
         //GameObject interactableGameObject = interactable.colliders[0].gameObject;
 
         //interactableCollider = interactableGameObject.gameObject.GetComponent<Collider>();

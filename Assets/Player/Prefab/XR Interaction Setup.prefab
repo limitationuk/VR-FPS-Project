@@ -196,132 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
---- !u!1 &3215742980121430931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6711614781435730389}
-  - component: {fileID: 3232886843195934703}
-  m_Layer: 0
-  m_Name: Screen Effect [Screen Vignette and Blink]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &6711614781435730389
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3215742980121430931}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2417910313427958166}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3232886843195934703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3215742980121430931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7731e18125717ec48bf79d880784ea73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectMaterial: {fileID: 0}
-  priority: 0
-  stopAction: 0
-  useTargetFPS: 1
-  targetFPS: 60
-  isTimeModeSeconds: 1
-  durationSeconds: 3.0000002
-  durationFrame: 40
-  animPlaySpeed: 1
-  affectedByTimescale: 1
-  __optionFoldout1: 1
-  __optionFoldout2: 1
-  __matPropListFoldout: 1
-  __propCount: 6
-  __durationChangeActionPopupIndex: 1
-  __materialDefaultValues:
-  - time: 0
-    frame: 0
-    floatValue: 24
-    range: {x: 0, y: 0}
-    min: 0
-    max: 0
-    color: {r: 24, g: 0, b: 0, a: 0}
-    vector4: {x: 24, y: 0, z: 0, w: 0}
-  - time: 0
-    frame: 0
-    floatValue: 0
-    range: {x: 0, y: 0}
-    min: 0
-    max: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-    vector4: {x: 0, y: 0, z: 0, w: 0}
-  - time: 0
-    frame: 0
-    floatValue: 1
-    range: {x: 0, y: 0}
-    min: 0
-    max: 0
-    color: {r: 1, g: 0, b: 0, a: 0}
-    vector4: {x: 1, y: 0, z: 0, w: 0}
-  - time: 0
-    frame: 0
-    floatValue: 1
-    range: {x: 0, y: 0}
-    min: 0
-    max: 0
-    color: {r: 1, g: 0, b: 0, a: 0}
-    vector4: {x: 1, y: 0, z: 0, w: 0}
-  __materialCurrentValues:
-  - time: 0
-    frame: 0
-    floatValue: 24
-    range: {x: 0, y: 0}
-    min: 0
-    max: 0
-    color: {r: 24, g: 0, b: 0, a: 0}
-    vector4: {x: 24, y: 0, z: 0, w: 0}
-  - time: 0
-    frame: 0
-    floatValue: 1
-    range: {x: 0, y: 1}
-    min: 0
-    max: 1
-    color: {r: 1, g: 0, b: 1, a: 0}
-    vector4: {x: 1, y: 0, z: 1, w: 0}
-  - time: 0
-    frame: 0
-    floatValue: 1
-    range: {x: 0, y: 1}
-    min: 0
-    max: 1
-    color: {r: 1, g: 0, b: 1, a: 0}
-    vector4: {x: 1, y: 0, z: 1, w: 0}
-  - time: 0
-    frame: 0
-    floatValue: 1
-    range: {x: 0, y: 2}
-    min: 0
-    max: 2
-    color: {r: 1, g: 0, b: 2, a: 0}
-    vector4: {x: 1, y: 0, z: 2, w: 0}
-  matPropertyList: []
 --- !u!1 &4116336513052829127
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,100 +404,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActionAssets:
   - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
---- !u!1 &8174095822219126109
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6041267053515392202}
-  - component: {fileID: 9135661092722244373}
-  m_Layer: 0
-  m_Name: Screen Effect [Screen Blur]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &6041267053515392202
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8174095822219126109}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2417910313427958166}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9135661092722244373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8174095822219126109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7731e18125717ec48bf79d880784ea73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectMaterial: {fileID: 0}
-  priority: 0
-  stopAction: 0
-  useTargetFPS: 1
-  targetFPS: 60
-  isTimeModeSeconds: 1
-  durationSeconds: 3.0000002
-  durationFrame: 0
-  animPlaySpeed: 1
-  affectedByTimescale: 1
-  __optionFoldout1: 1
-  __optionFoldout2: 1
-  __matPropListFoldout: 1
-  __propCount: 4
-  __durationChangeActionPopupIndex: 0
-  __materialDefaultValues:
-  - time: 0
-    frame: 0
-    floatValue: 0.2
-    range: {x: 0, y: 0}
-    min: 0
-    max: 0
-    color: {r: 0.2, g: 0, b: 0, a: 0}
-    vector4: {x: 0.2, y: 0, z: 0, w: 0}
-  - time: 0
-    frame: 0
-    floatValue: 0.5
-    range: {x: 0, y: 0}
-    min: 0
-    max: 0
-    color: {r: 0.5, g: 0, b: 0, a: 0}
-    vector4: {x: 0.5, y: 0, z: 0, w: 0}
-  __materialCurrentValues:
-  - time: 0
-    frame: 0
-    floatValue: 1
-    range: {x: 0, y: 1}
-    min: 0
-    max: 1
-    color: {r: 1, g: 0, b: 1, a: 0}
-    vector4: {x: 1, y: 0, z: 1, w: 0}
-  - time: 0
-    frame: 0
-    floatValue: 0.5
-    range: {x: 0, y: 1}
-    min: 0
-    max: 1
-    color: {r: 0.5, g: 0, b: 1, a: 0}
-    vector4: {x: 0.5, y: 0, z: 1, w: 0}
-  matPropertyList: []
 --- !u!1001 &3916233974521337784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -836,6 +616,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2852090636656494814, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2257
+      objectReference: {fileID: 0}
     - target: {fileID: 2852090636656494815, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -973,12 +757,6 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6711614781435730389}
-    - targetCorrespondingSourceObject: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6041267053515392202}
-    - targetCorrespondingSourceObject: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5276694327485597673}
     - targetCorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
@@ -1019,7 +797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectGrip: 0
   gunGrip: 0
-  interactableCollider: {fileID: 0}
+  manager: {fileID: 3896267539290949988}
 --- !u!1 &2417910313427958165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -1042,10 +820,9 @@ MonoBehaviour:
   regenCool: 3
   regenDelay: 1
   regen: 0
-  percent: 0.5
+  percent: 1
   bloodScreen: {fileID: 3931236709656273206}
-  eye: {fileID: 3215742980121430931}
-  blur: {fileID: 8174095822219126109}
+  eye: {fileID: 0}
   Move: {fileID: 3933579404789002036}
   Teleport: {fileID: 2899791128751990774}
   cameraDown: {fileID: 6981409862134404535}

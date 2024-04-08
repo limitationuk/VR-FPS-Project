@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     [SerializeField] UnityEngine.UI.Image bloodScreen;
     [SerializeField] Coroutine coroutine;
     [SerializeField] GameObject eye;
-    [SerializeField] GameObject blur;
     [SerializeField] GameObject Move;
     [SerializeField] GameObject Teleport;
     [SerializeField] CameraDown cameraDown;
@@ -28,6 +27,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        eye = GameObject.Find("ScreenEffect").transform.Find("Eye").gameObject;
+
         if (0 < hp && hp < maxHp)
         {
             bloodScreen.color = new Color(1, 0, 0, 1f / hp);
@@ -63,7 +64,6 @@ public class Player : MonoBehaviour
     private void Die()
     {
         eye.SetActive(true);
-        blur.SetActive(true);
         Move.SetActive(false);
         Teleport.SetActive(false);
         characterController.enabled = false;
