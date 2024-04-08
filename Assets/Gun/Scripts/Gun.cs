@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum WeaponType
@@ -13,45 +14,46 @@ public class Gun : MonoBehaviour
 
     [Header("총 속성")]
 
-    [Header("총 유형")]
-    public WeaponType weaponType;
+    [Tooltip("총 유형")]
+    [SerializeField] WeaponType weaponType;
 
-    [Header("총 최대 사거리")]
+    [Tooltip("총구 위치")]
+    [SerializeField] Transform muzzlePoint;
+    [Tooltip("최대 사거리")]
     [SerializeField] float maxDistance;
-
-    [Header("총 데미지")]
+    [Tooltip("공격력")]
     [SerializeField] int damage;
 
-    [Header("사격) 사격가능 여부 / 쿨타임")]
+    [Tooltip("사격 가능 여부")]
     [SerializeField] bool isShootable;
+    [Tooltip("사격 쿨타임")]
     [SerializeField] float shootCoolTime;
+    [Tooltip("연사 속도")]
+    [SerializeField] float fireRate;
 
-    [Header("연사) 연사가능 여부 / 속도")]
-    public bool isContinuousFireable;
-    public float fireRate;
+    [Space(20)]    
+    [Header("이펙트 / 오디오")]
 
-    [Header("탄창/탄약-----")]
-    [SerializeField] GameObject magazine;
-    [SerializeField] int ammoCount;
-
-    [Space(30)]
-    [Header("총 이펙트")]
-
-    [Header("총구 섬광")]
+    [Tooltip("총구 섬광")]
     [SerializeField] ParticleSystem muzzleFlash;
-
-    [Header("총알 스파이크 - 물체")]
-
-    [Header("총알 스파이크 - 사람")]
-
-    [Header("탄흔")]
+    [Tooltip("피격 위치 이펙트")]
     [SerializeField] PooledObject hitEffectPrefab;
 
-    // private
-    [SerializeField] Transform muzzlePoint;
-    //[SerializeField] ParticleSystem hitEffect;
+    int reloadAmmo; // 총알 재장전 개수
+    int currentAmmo; // 현재 총알 개수
+    int maxAmmo; // 최대 소유 가능 총알 개수
+    int carryAmmo; // 현재 소유 총알 개수
+    float reloadTime; // 재장전 속도 -?
 
-    // 사격
+    TMPro.TextMeshPro text; // 총알 개수 나타내는 UI
+    AudioClip fireSound; // 총알 발사 소리
+
+
+    private void Start()
+    {
+        //Manager.Pool.CreatePool(hitEffectPrefab, 5, 5);  // 현재 씬 스크립트에 있음
+    }
+
     public void Fire()
     {
         if (isShootable)
@@ -84,15 +86,14 @@ public class Gun : MonoBehaviour
                     enemy.TakeDamage(damage);  // 총의 기본 damage 적용
                 }
 
-                //ParticleSystem effect = Instantiate(hitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));  // 총알자국 파티클 (투사체 사용할 때)
+                //ParticleSystem effect = Instantiate(hitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));  // 총알자국 파티클
                 PooledObject hitEffect = Manager.Pool.GetPool(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
                 hitEffect.transform.parent = hitInfo.transform;
 
-                // 넉백
                 Rigidbody rigid = hitInfo.collider.GetComponent<Rigidbody>();
                 if (rigid != null)
                 {
-                    rigid.AddForceAtPosition(-hitInfo.normal * 0.1f, hitInfo.point, ForceMode.Impulse);
+                    rigid.AddForceAtPosition(-hitInfo.normal * 1f, hitInfo.point, ForceMode.Impulse);  // 넉백
                 }
             }
             else
@@ -105,7 +106,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    // 사격쿨타임 코루틴
+    // 사격 쿨타임 코루틴
     IEnumerator ShootCoolTimeRoutine()
     {
         isShootable = false;
@@ -113,5 +114,31 @@ public class Gun : MonoBehaviour
         isShootable = true;
     }
 
-    // 탄창, 탄약 계산
+    // 연사 코루틴
+    IEnumerator ContinuousFireRoutine()
+    {
+        while(isShootable)
+        {
+            Fire();
+            yield return new WaitForSeconds(fireRate);
+        }
+    }
+
+    private Coroutine routine;
+
+    public void ContinuousFireStart()
+    {
+        routine = StartCoroutine(ContinuousFireRoutine());
+    }
+
+    public void ContinuousFireStop()
+    {
+        StopCoroutine(routine);
+    }
+
+    public void Reload()
+    {
+        //currentAmmo = maxAmmo;
+    }
+
 }

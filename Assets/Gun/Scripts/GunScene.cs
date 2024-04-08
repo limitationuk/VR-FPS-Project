@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameScene : MonoBehaviour
+public class GunScene : MonoBehaviour
 {
     [SerializeField] PooledObject hitEffectPrefab;
 
     private void Start()
     {
-        Manager.Pool.CreatePool(hitEffectPrefab, 5, 5);
+        Manager.Pool.CreatePool(hitEffectPrefab, 10, 10);
     }
 }

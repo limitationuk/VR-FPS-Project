@@ -37,12 +37,13 @@ public class CameraDown : MonoBehaviour
             dynamicMoveProvider.moveSpeed = 0.5f;
             StartCoroutine(Down());
         }
-        else if ((newPosition.y < 1.36144f) && down == 0)
+        else if ((newPosition.y < 1.36144f) && down == 0)//1.36144f
         {
             dynamicMoveProvider.moveSpeed = 1f;
             StartCoroutine(UP());
         }
         cameraPos.localPosition = newPosition;
+
     }
 
 

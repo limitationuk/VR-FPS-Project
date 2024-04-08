@@ -840,6 +840,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2738939096950650900, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
+      propertyPath: m_CameraYOffset
+      value: 1.36144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738939096950650900, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928342687385467682, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
+      propertyPath: m_Center.y
+      value: 0.76072
+      objectReference: {fileID: 0}
     - target: {fileID: 8682326798186183623, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
