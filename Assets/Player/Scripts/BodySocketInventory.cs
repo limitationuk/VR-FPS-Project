@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 [System.Serializable]
 public class bodySocket
@@ -10,9 +11,10 @@ public class bodySocket
     public float heightRatio;
 }
 
-public class BodySocketInventory : MonoBehaviour
+public class BodySocketInventory : XRBaseControllerInteractor
 
 {
+    [SerializeField] RightGraber rightGraber;
     public GameObject HMD;
     public bodySocket[] bodySockets;
 
@@ -40,4 +42,44 @@ public class BodySocketInventory : MonoBehaviour
         //transform.localPosition = new Vector3(_currentHMDlocalPosition.x, 0, _currentHMDlocalPosition.z);
         transform.rotation = new Quaternion(transform.rotation.x, _currentHMDRotation.y, transform.rotation.z, _currentHMDRotation.w);
     }
+
+
+    public void OnHoverEnter(HoverEnterEventArgs args)
+    {
+        IXRSelectInteractable interactable = args.interactableObject as IXRSelectInteractable;
+
+        if (((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)
+        {
+            
+            rightGraber.SocketTrigger = true;
+            Debug.Log(rightGraber.SocketTrigger);
+        }
+    }
+
+    public void OnHoverExit(HoverExitEventArgs args)
+    {
+        IXRSelectInteractable interactable = args.interactableObject as IXRSelectInteractable;
+
+        if (((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)
+        {
+            
+            rightGraber.SocketTrigger = false;
+            Debug.Log(rightGraber.SocketTrigger);
+        }
+    }
+
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    if (((1 << collision.gameObject.layer) & LayerMask.GetMask("Gun")) != 0)
+    //    {
+    //        rightGraber.SocketTrigger = true;
+    //    }
+    //}
+    //private void OnTriggerExit(Collider collision)
+    //{
+    //    if (((1 << collision.gameObject.layer) & LayerMask.GetMask("Gun")) != 0)
+    //    {
+    //        rightGraber.SocketTrigger = false;
+    //    }
+    //}
 }
