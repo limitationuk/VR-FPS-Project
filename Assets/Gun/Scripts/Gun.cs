@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public enum WeaponType
@@ -26,37 +26,62 @@ public class Gun : MonoBehaviour
 
     [Tooltip("사격 가능 여부")]
     [SerializeField] bool isShootable;
-    [Tooltip("사격 쿨타임")]
+    [Tooltip("사격 쿨타임 (Rifle일 경우 0)")]
     [SerializeField] float shootCoolTime;
-    [Tooltip("연사 속도")]
+    [Tooltip("연사 속도 (Pistol일 경우 0)")]
     [SerializeField] float fireRate;
 
-    [Space(20)]    
-    [Header("이펙트 / 오디오")]
+    [Tooltip("탄약 소유 여부")]
+    [SerializeField] bool hasAmmo;
+    //[Tooltip("최대 소유 가능 탄약 개수")]
+    //[SerializeField] int maxAmmo;
+    //[Tooltip("현재 소유하고 있는 전체 탄약 개수")]
+    //[SerializeField] int carryAmmo;
+    [Tooltip("탄약 재장전 개수")]
+    [SerializeField] int reloadAmmo;
+    [Tooltip("현재 총에 남아있는 탄약 개수 (수정 불가능)")]
+    [SerializeField] int currentAmmo;
+    //[Tooltip("재장전 속도")]
+    //[SerializeField] float reloadTime;
+
+    [Space(20)]
+    [Header("UI")]
+
+    TMPro.TextMeshPro text; // 탄약 개수 표시 UI
+    AudioClip fireSound; // 총알 발사 소리
+
+    //[Tooltip("")]
+    //[SerializeField] float fireRate;
+
+    [Space(20)]
+    [Header("이펙트 / 사운드")]
 
     [Tooltip("총구 섬광")]
     [SerializeField] ParticleSystem muzzleFlash;
     [Tooltip("피격 위치 이펙트")]
     [SerializeField] PooledObject hitEffectPrefab;
 
-    int reloadAmmo; // 총알 재장전 개수
-    int currentAmmo; // 현재 총알 개수
-    int maxAmmo; // 최대 소유 가능 총알 개수
-    int carryAmmo; // 현재 소유 총알 개수
-    float reloadTime; // 재장전 속도 -?
-
-    TMPro.TextMeshPro text; // 총알 개수 나타내는 UI
-    AudioClip fireSound; // 총알 발사 소리
-
 
     private void Start()
     {
         //Manager.Pool.CreatePool(hitEffectPrefab, 5, 5);  // 현재 씬 스크립트에 있음
+        if (weaponType == WeaponType.Pistol)
+        {
+            fireRate = 0;
+        }
+        else if (weaponType == WeaponType.Rifle)
+        {
+            shootCoolTime = 0;
+        }
+        currentAmmo = reloadAmmo;
+        isShootable = true;
+        hasAmmo = true;
     }
 
     public void Fire()
     {
-        if (isShootable)
+        CheckAmmoCount();
+        if (isShootable && hasAmmo)
         {
             muzzleFlash.Play();  // 총구 파티클
             bool isRay = Physics.Raycast(muzzlePoint.position, muzzlePoint.forward, out RaycastHit hitInfo, maxDistance);
@@ -64,7 +89,7 @@ public class Gun : MonoBehaviour
             //hitInfo.distance  // 맞았을 때 Ray 쏜 거리
             //hitInfo.collider.gameObject.name  // 어떤 물체에 부딪혔는지
             //hitInfo.point  // 레이가 닿은 위치
-            //enemy?.TakeDamage(damage);  // 있으면 데미지 주고 없으면 안주기
+            //enemy?.TakeDamage(damage);  // 있으면 데미지 주고 없으면 안주기    
 
             if (isRay)
             {
@@ -101,9 +126,14 @@ public class Gun : MonoBehaviour
                 Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward * maxDistance, Color.red, 0.3f);
                 Debug.Log("안 맞음");
             }
-
+            currentAmmo--;
             StartCoroutine(ShootCoolTimeRoutine());
         }
+        else
+        {
+            Debug.Log("총알없거나 쿨타임덜참");
+        }
+        
     }
 
     // 사격 쿨타임 코루틴
@@ -117,7 +147,7 @@ public class Gun : MonoBehaviour
     // 연사 코루틴
     IEnumerator ContinuousFireRoutine()
     {
-        while(isShootable)
+        while (isShootable)
         {
             Fire();
             yield return new WaitForSeconds(fireRate);
@@ -126,19 +156,35 @@ public class Gun : MonoBehaviour
 
     private Coroutine routine;
 
+    // 연사 시작
     public void ContinuousFireStart()
     {
+        CheckAmmoCount();
         routine = StartCoroutine(ContinuousFireRoutine());
     }
 
+    // 연사 중지
     public void ContinuousFireStop()
     {
         StopCoroutine(routine);
     }
 
+    // 탄약 개수 체크
+    public void CheckAmmoCount()
+    {
+        if (currentAmmo <= 0)
+        {
+            hasAmmo = false;
+        }
+        else
+        {
+            hasAmmo = true;
+        }
+    }
+
     public void Reload()
     {
-        //currentAmmo = maxAmmo;
+        currentAmmo = reloadAmmo;
     }
 
 }
