@@ -1,23 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class MagazineSocket : MonoBehaviour
 {
     [Tooltip("")]
 
+    [SerializeField] InputActionReference dropMagazineInput;
+
     [SerializeField] XRInteractionManager interactionManager;
     [SerializeField] IXRSelectInteractor socketInteractor;
     [SerializeField] IXRSelectInteractable socketInteractable;
 
     [SerializeField] Magazine startingMagazine;
+    [SerializeField] Gun currentGun;
 
     private void Awake()
     {
         //collider.gameObject.SetActive(false);
-        //if (magazine.startingMagazine) CreateStartingMagazine();
+        //if (startingMagazine) CreateStartingMagazine();
         CreateStartingMagazine();
+    }
+
+    /*private void OnEnable()
+    {
+        dropMagazineInput.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        dropMagazineInput.action.Disable();
+    }*/
+
+    private void Start()
+    {
+        interactionManager = FindObjectOfType<XRInteractionManager>();
+        socketInteractor = GetComponent<XRSocketInteractor>();
+        currentGun = GetComponentInParent<Gun>();
+    }
+
+    public void Update()
+    {
+        float dropMagazine = dropMagazineInput.action.ReadValue<float>();
+        Debug.Log(dropMagazine);
+        if (dropMagazine >= 1)
+        {
+            DropMagazine();
+        }
     }
 
     private void CreateStartingMagazine()
@@ -26,19 +58,17 @@ public class MagazineSocket : MonoBehaviour
         Instantiate(startingMagazine, transform.position, transform.rotation, transform);
     }
 
-    public void DropMagazine(SelectExitEventArgs args)
-    {
-    }
-
     // ÅºÃ¢ ºÐ¸®
-    public void MagazineSelectExit()
+    public void DropMagazine()
     {
-        Debug.Log("MagazineSelectExit");
+        Debug.Log("DropMagazine");
+        Debug.Log(currentGun.name);
+
     }
 
     // ÅºÃ¢ ÀåÂø
-    public void MagazineSelectEnter()
+    public void InsertMagazine()
     {
-        Debug.Log("MagazineSelectEnter");
+        Debug.Log("InsertMagazine");
     }
 }

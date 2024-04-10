@@ -31,6 +31,8 @@ public class Gun : MonoBehaviour
     [Tooltip("연사 속도 (Pistol일 경우 0)")]
     [SerializeField] float fireRate;
 
+    [SerializeField] MagazineSocket magazineSocket;
+
     [Tooltip("탄약 소유 여부")]
     [SerializeField] bool hasAmmo;
     //[Tooltip("최대 소유 가능 탄약 개수")]
