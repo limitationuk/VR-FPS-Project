@@ -10,25 +10,25 @@ public class RightGraber : MonoBehaviour
     [SerializeField] bool objectGrip;
     [SerializeField] bool gunGrip;
     [SerializeField] XRInteractionManager manager;
-    [SerializeField] IXRSelectInteractor directInteractor;
-    [SerializeField] IXRSelectInteractor socketInteractor;
-    [SerializeField] IXRSelectInteractable directInteractable;
+    [SerializeField] UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor directInteractor;
+    [SerializeField] UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor socketInteractor;
+    [SerializeField] UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable directInteractable;
     
 
-    [SerializeField] IXRSelectInteractable socketInteractable;
-    [SerializeField] IXRSelectInteractable socketInteractable2;
+    [SerializeField] UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable socketInteractable;
+    [SerializeField] UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable socketInteractable2;
     [SerializeField] bool sceneChange;
     [SerializeField] bool socketTrigger;
 
 
 
     public XRInteractionManager Manager => manager;
-    public IXRSelectInteractor DirectInteractor { get => directInteractor; set => directInteractor = value; } 
-    public IXRSelectInteractor SocketInteractor { get => socketInteractor; set => socketInteractor = value; }
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor DirectInteractor { get => directInteractor; set => directInteractor = value; } 
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor SocketInteractor { get => socketInteractor; set => socketInteractor = value; }
     
-    public IXRSelectInteractable DirectInteractable { get => directInteractable; set => directInteractable = value; }
+    public UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable DirectInteractable { get => directInteractable; set => directInteractable = value; }
 
-    public IXRSelectInteractable SocketInteractable { get => socketInteractable; set => socketInteractable = value; }
+    public UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable SocketInteractable { get => socketInteractable; set => socketInteractable = value; }
     public bool SceneChange { get => sceneChange; set => sceneChange = value; }
     public bool SocketTrigger { get => socketTrigger; set => socketTrigger = value; }
 
@@ -38,14 +38,14 @@ public class RightGraber : MonoBehaviour
 
     private void Start()
     {
-        directInteractor = GetComponent<XRDirectInteractor>();
+        directInteractor = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.XRDirectInteractor>();
         socketInteractor = FindAnyObjectByType<BodySocketInventory>();
     }
 
 
     public void Grab(SelectEnterEventArgs args)
     {
-        IXRSelectInteractable interactable = args.interactableObject;
+        UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable = args.interactableObject;
         directInteractable = interactable;
 
         if (!gunGrip && ((1<<interactable.interactionLayers) & (1<<InteractionLayerMask.GetMask("Gun"))) != 0)//interactable.transform.gameObject.name == "Gun"
@@ -62,7 +62,7 @@ public class RightGraber : MonoBehaviour
     public void UnGrab(SelectExitEventArgs args)
     {
 
-        IXRSelectInteractable interactable = args.interactableObject;
+        UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable = args.interactableObject;
 
         if (SocketTrigger && !sceneChange)
         {
