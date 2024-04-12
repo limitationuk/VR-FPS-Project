@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Enemy/Scene/EnemyScene.meta
 guid: 3c6eb66c690da2947bd87fdc2157673f
+========
+guid: d994c8b4a4b3ad849b88d4cb15fbb026
+>>>>>>>> develop:Assets/UI_JaeGyu.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

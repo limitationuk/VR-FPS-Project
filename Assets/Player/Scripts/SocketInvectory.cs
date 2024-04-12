@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class InventorySocket : XRSocketInteractor
+public class InventorySocket : UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor
 {
     [SerializeField] InputActionProperty selectInput;
 
-    private IXRInteractable currentObject; //ÇöÀç ¿ÀºêÁ§Æ®
-    private IXRInteractable deselectObject; //
+    private UnityEngine.XR.Interaction.Toolkit.Interactables.IXRInteractable currentObject; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+    private UnityEngine.XR.Interaction.Toolkit.Interactables.IXRInteractable deselectObject; //
 
     private bool hovering;
 
@@ -37,7 +37,7 @@ public class InventorySocket : XRSocketInteractor
         selectExited.RemoveListener(SelectExit);
     }
 
-    public override bool CanSelect(IXRSelectInteractable interactable)
+    public override bool CanSelect(UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable)
     {
         return base.CanSelect(interactable) && interactable != deselectObject;
     }
@@ -62,25 +62,25 @@ public class InventorySocket : XRSocketInteractor
         deselectObject = null;
     }
 
-    public void HoverEnter(HoverEnterEventArgs args) //È£¹ö ½ÃÀÛ
+    public void HoverEnter(HoverEnterEventArgs args) //È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
-        if (args.interactableObject == currentObject) //±×¸³ ¿ÀºêÁ§Æ® == ÇöÀç ¿ÀºêÁ§Æ® ÀÏ ‹š
+        if (args.interactableObject == currentObject) //ï¿½×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® == ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½ï¿½
             return;
 
         hovering = true;
     }
 
-    public void HoverExit(HoverExitEventArgs args) //È£¹ö ²ô±â
+    public void HoverExit(HoverExitEventArgs args) //È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         hovering = false;
     }
 
-    public void SelectEnter(SelectEnterEventArgs args) //±×¸³ ¿ÀºêÁ§Æ® -> ÇöÀç ¿ÀºêÁ§Æ®
+    public void SelectEnter(SelectEnterEventArgs args) //ï¿½×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® -> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     {
         currentObject = args.interactableObject;
     }
 
-    public void SelectExit(SelectExitEventArgs args) //ÇöÀç ¿ÀºêÁ§Æ® ºñ¿ì±â
+    public void SelectExit(SelectExitEventArgs args) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
     {
         currentObject = null;
     }

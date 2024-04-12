@@ -11,7 +11,7 @@ public class bodySocket
     public float heightRatio;
 }
 
-public class BodySocketInventory : XRBaseControllerInteractor
+public class BodySocketInventory : UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInputInteractor
 
 {
     [SerializeField] RightGraber rightGraber;
@@ -46,7 +46,7 @@ public class BodySocketInventory : XRBaseControllerInteractor
 
     public void OnHoverEnter(HoverEnterEventArgs args)
     {
-        IXRSelectInteractable interactable = args.interactableObject as IXRSelectInteractable;
+        UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable = args.interactableObject as UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable;
 
         if (((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)
         {
@@ -57,7 +57,7 @@ public class BodySocketInventory : XRBaseControllerInteractor
 
     public void OnHoverExit(HoverExitEventArgs args)
     {
-        IXRSelectInteractable interactable = args.interactableObject as IXRSelectInteractable;
+        UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable = args.interactableObject as UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable;
 
         if (((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)
         {

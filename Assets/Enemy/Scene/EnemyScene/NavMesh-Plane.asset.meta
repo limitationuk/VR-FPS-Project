@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Enemy/Scene/EnemyScene/NavMesh-Plane.asset.meta
 guid: b1a6bab90e4ee8943a8ec014b9df60ce
+========
+guid: c9c0cca23de4ddc44b16f3ddf9bce07a
+>>>>>>>> develop:Assets/TextMesh Pro/Resources/Fonts & Materials/MALGUNBD SDF.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 23800000
