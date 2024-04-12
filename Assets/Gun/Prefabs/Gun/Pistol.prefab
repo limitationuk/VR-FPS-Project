@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropMagazineInput: {fileID: -8500601167275395671, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  manager: {fileID: 0}
+  socketInteractor: {fileID: 0}
   rightGraber: {fileID: 0}
 --- !u!114 &4067743371010621447
 MonoBehaviour:
@@ -512,7 +512,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 4294967295
-  m_AttachTransform: {fileID: 7675727283504072164}
+  m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 6218577488284953222}

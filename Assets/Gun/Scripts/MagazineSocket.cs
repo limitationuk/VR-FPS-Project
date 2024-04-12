@@ -95,7 +95,7 @@ public class MagazineSocket : MonoBehaviour
     }
 
     // ÅºÃ¢ ÀåÂø ÄÚ·çÆ¾
-    IEnumerator InsertMagazineRoutine()
+    /*IEnumerator InsertMagazineRoutine()
     {
         socketInteractor.socketActive = false;
 
@@ -107,7 +107,7 @@ public class MagazineSocket : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         socketInteractor.socketActive = true;
-    }
+    }*/
 
     // ÅºÃ¢ ÀåÂø
     public void InsertMagazine()
@@ -126,12 +126,12 @@ public class MagazineSocket : MonoBehaviour
         Debug.Log("hoverExit");
     }
 
-    public void OnSelectEnter(SelectEnterEventArgs args)
+    /*public void OnSelectEnter(SelectEnterEventArgs args)
     {
         Debug.Log("selectEnter");
-        IXRSelectInteractable interactable = args.interactableObject;
-        Debug.Log(interactable);
+        //IXRSelectInteractable interactable = args.interactableObject;
+        //Debug.Log(interactable);
 
 
-    }
+    }*/
 }

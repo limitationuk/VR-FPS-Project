@@ -58,7 +58,8 @@ public class Gun : MonoBehaviour
     [Tooltip("ÃÑ±¸ ¼¶±¤")]
     [SerializeField] ParticleSystem muzzleFlash;
     [Tooltip("ÇÇ°Ý À§Ä¡ ÀÌÆåÆ®")]
-    [SerializeField] PooledObject hitEffectPrefab;
+    [SerializeField] PooledObject PistolHitEffectPrefab;
+    [SerializeField] PooledObject RifleHitEffectPrefab;
 
     AudioClip fireSound; // ÃÑ¾Ë ¹ß»ç ¼Ò¸®
 
@@ -68,10 +69,12 @@ public class Gun : MonoBehaviour
         if (weaponType == WeaponType.Pistol)
         {
             fireRate = 0;
+            RifleHitEffectPrefab = null;
         }
         else if (weaponType == WeaponType.Rifle)
         {
             shootCoolTime = 0;
+            PistolHitEffectPrefab = null;
         }
         currentAmmo = reloadAmmo;
         isShootable = true;
@@ -110,15 +113,17 @@ public class Gun : MonoBehaviour
                     enemy = hitInfo.collider.GetComponentInParent<Enemy>();
                     enemy.TakeDamage(damage);  // ÃÑÀÇ ±âº» damage Àû¿ë
                 }
+                Debug.Log("ÃÑ ½ô");
 
                 //ParticleSystem effect = Instantiate(hitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));  // ÃÑ¾ËÀÚ±¹ ÆÄÆ¼Å¬
                 PooledObject hitEffect = Manager.Pool.GetPool(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
                 hitEffect.transform.parent = hitInfo.transform;
+                Debug.Log(hitInfo.transform.name);
 
                 Rigidbody rigid = hitInfo.collider.GetComponent<Rigidbody>();
                 if (rigid != null)
                 {
-                    rigid.AddForceAtPosition(-hitInfo.normal * 1f, hitInfo.point, ForceMode.Impulse);  // ³Ë¹é
+                    rigid.AddForceAtPosition(-hitInfo.normal * 0f, hitInfo.point, ForceMode.Impulse);  // ³Ë¹é
                 }
             }
             else
