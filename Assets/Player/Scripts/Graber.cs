@@ -7,18 +7,18 @@ public class Graber : MonoBehaviour
     [SerializeField] bool objectGrip;
     [SerializeField] bool gunGrip;
     [SerializeField] XRInteractionManager manager;
-    [SerializeField] IXRSelectInteractor directInteractor;
-    [SerializeField] IXRSelectInteractable directInteractable;
+    [SerializeField] UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor directInteractor;
+    [SerializeField] UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable directInteractable;
     [SerializeField] bool sceneChange;
 
     public XRInteractionManager Manager => manager;
-    public IXRSelectInteractor DirectInteractor { get => directInteractor; set => directInteractor = value; }
-    public IXRSelectInteractable DirectInteractable { get => directInteractable; set => directInteractable = value; }
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor DirectInteractor { get => directInteractor; set => directInteractor = value; }
+    public UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable DirectInteractable { get => directInteractable; set => directInteractable = value; }
     public bool SceneChange { get => sceneChange; set => sceneChange = value; }
     //[SerializeField] Collider interactableCollider;
     private void Start()
     {
-        directInteractor = GetComponent<XRDirectInteractor>();
+        directInteractor = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.XRDirectInteractor>();
     }
 
     public bool ObjectGrip => objectGrip;
@@ -27,7 +27,7 @@ public class Graber : MonoBehaviour
     public void Grab(SelectEnterEventArgs args)
     {
 
-        IXRSelectInteractable interactable = args.interactableObject;
+        UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable = args.interactableObject;
         directInteractable = interactable;
 
 
@@ -43,7 +43,7 @@ public class Graber : MonoBehaviour
 
     public void UnGrab(SelectExitEventArgs args)
     {
-        IXRSelectInteractable interactable = args.interactableObject;
+        UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable = args.interactableObject;
 
         if (!sceneChange)
         {
