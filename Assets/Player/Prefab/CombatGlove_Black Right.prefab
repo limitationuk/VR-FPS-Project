@@ -177,7 +177,7 @@ MonoBehaviour:
   rightGraber: {fileID: 0}
   gripInput: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   triggerInput: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  thumbInput: {fileID: -5392393118497770399, guid: 4c907a68ce637c84f9c9b56ffad8ffa0, type: 3}
+  thumbInput: {fileID: 5372464191188670886, guid: 97f7a1d79db1c95498befda85822aea3, type: 3}
   animator: {fileID: -7914066046517665429}
 --- !u!95 &-7914066046517665429
 Animator:
