@@ -93,7 +93,8 @@ public class Gun : MonoBehaviour
                 Rigidbody rigid = hitInfo.collider.GetComponent<Rigidbody>();
                 if (rigid != null)
                 {
-                    rigid.AddForceAtPosition(-hitInfo.normal * 1f, hitInfo.point, ForceMode.Impulse);  // ³Ë¹é
+                    Debug.Log(rigid);
+                    rigid.AddForceAtPosition(-hitInfo.normal * 100f, hitInfo.point, ForceMode.Impulse);  // ³Ë¹é
                 }
             }
             else

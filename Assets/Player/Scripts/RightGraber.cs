@@ -69,6 +69,7 @@ public class RightGraber : MonoBehaviour
             if (socketInteractable == null)
             {
                 socketInteractable = directInteractable;
+                directInteractable = null;
             }
             else if (socketInteractable != null)
             {
@@ -77,13 +78,12 @@ public class RightGraber : MonoBehaviour
                 directInteractable = socketInteractable2;
                 manager.SelectEnter(socketInteractor, directInteractable);
                 manager.SelectEnter(directInteractor, socketInteractable2);
-                
             }
+
         }
         else if (!SocketTrigger && !sceneChange)
         {
             directInteractable = null;
-
         }
 
 

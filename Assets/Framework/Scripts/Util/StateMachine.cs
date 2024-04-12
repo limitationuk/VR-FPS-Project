@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class StateMachine<T> where T : Enum
 {
     private Dictionary<T, BaseState<T>> stateDic = new Dictionary<T, BaseState<T>>();
-    private BaseState<T> curState;
+    public BaseState<T> curState;
 
     public void Start(T startState)
     {

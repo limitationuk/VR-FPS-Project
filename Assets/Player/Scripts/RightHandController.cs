@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class RightHandController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class RightHandController : MonoBehaviour
     [SerializeField] InputActionReference gripInput;
     [SerializeField] InputActionReference triggerInput;
     [SerializeField] InputActionReference thumbInput;
+
 
     [SerializeField] Animator animator;
 
@@ -34,6 +36,10 @@ public class RightHandController : MonoBehaviour
         float grip = gripInput.action.ReadValue<float>();
         float trigger = triggerInput.action.ReadValue<float>();
         float thumb = thumbInput.action.ReadValue<float>();
+
+
+
+
         if (rightGraber.GunGrip)
         {
             animator.SetBool("GunGrip", true);

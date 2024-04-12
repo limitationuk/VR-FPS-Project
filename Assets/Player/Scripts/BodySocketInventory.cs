@@ -50,7 +50,6 @@ public class BodySocketInventory : XRBaseControllerInteractor
 
         if (((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)
         {
-            
             rightGraber.SocketTrigger = true;
             Debug.Log(rightGraber.SocketTrigger);
         }

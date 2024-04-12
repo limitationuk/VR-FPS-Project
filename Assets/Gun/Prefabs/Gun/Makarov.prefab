@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2029602703414776401}
   - component: {fileID: 9182566438241169413}
   - component: {fileID: 1800646112584842459}
+  - component: {fileID: -4367165205140206372}
   m_Layer: 0
   m_Name: Makarov
   m_TagString: Untagged
@@ -239,7 +240,7 @@ MonoBehaviour:
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: -4367165205140206372}
         m_TargetAssemblyTypeName: Gun, Assembly-CSharp
         m_MethodName: Fire
         m_Mode: 1
@@ -334,6 +335,27 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &-4367165205140206372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500787171464308655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0780ab5cbb1d14ba2f408eaa6328f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 0
+  muzzlePoint: {fileID: 0}
+  maxDistance: 20
+  damage: 20
+  isShootable: 1
+  shootCoolTime: 1
+  fireRate: 1
+  muzzleFlash: {fileID: 0}
+  hitEffectPrefab: {fileID: 0}
 --- !u!1 &6922877861524871825
 GameObject:
   m_ObjectHideFlags: 0
