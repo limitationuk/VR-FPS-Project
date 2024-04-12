@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] int hp;
     [SerializeField] EnemyState enemyState;
     [SerializeField] Animator animator;
+    [SerializeField] Transform playerPos;
 
 
     //public int Hp => hp;  // 읽기 전용
@@ -36,7 +37,8 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             //enemyState.stateMachine.ChangeState(EnemyState.State.E_Hit); 
             enemyState.Animator.SetTrigger("hit");
-
+            enemyState.Player = playerPos;
+            enemyState.stateMachine.ChangeState(EnemyState.State.E_Chase);
         }
     }
 }

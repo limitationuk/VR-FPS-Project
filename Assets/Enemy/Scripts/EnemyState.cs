@@ -35,7 +35,7 @@ public class EnemyState : MonoBehaviour
     public Animator Animator => animator;
     public List<Transform> WayPoints => wayPoints;
     public NavMeshAgent Agent=>agent;
-    public Transform Player => player;
+    public Transform Player { get => player; set => player = value; } 
     public float WaitTime => waitTime;
     public int CurrentWayPointIndex { get => currentWayPointIndex; set => currentWayPointIndex = value; }
 

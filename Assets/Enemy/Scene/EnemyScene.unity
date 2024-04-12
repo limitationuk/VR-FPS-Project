@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -709,6 +709,16 @@ Transform:
   - {fileID: 475989741}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &675715118 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3916233974319857832, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
+  m_PrefabInstance: {fileID: 1825293367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &746372540 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3916233972798726346, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
+  m_PrefabInstance: {fileID: 1825293367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1150353669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,6 +1169,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9120849930575798536, guid: 258c4356d64dc0446a974019fa46f767, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 746372540}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1301,6 +1315,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3916233974319857836, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
+      propertyPath: m_ModelParent
+      value: 
+      objectReference: {fileID: 675715118}
+    - target: {fileID: 3916233974319857836, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 4064458542409192, guid: dba9590de5d650e42a5fa440ab775b71, type: 3}
     - target: {fileID: 6535423451701767782, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
       propertyPath: regen
       value: 0
