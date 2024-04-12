@@ -93,20 +93,11 @@ public class SceneManager : Singleton<SceneManager>
             graber.Manager.SelectEnter(graber.DirectInteractor, graber.DirectInteractable);
         }
 
-
-
         fadeOut.gameObject.SetActive(true);
-
-
-
 
         yield return FadeIn();
         fade.gameObject.SetActive(false);
         yield return null;
-
-        
-
-       
 
         graber.SceneChange = false;
         rightGraber.SceneChange = false;

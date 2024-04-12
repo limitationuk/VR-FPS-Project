@@ -31,6 +31,9 @@ public class Gun : MonoBehaviour
     [Tooltip("연사 속도 (Pistol일 경우 0)")]
     [SerializeField] float fireRate;
 
+    [Tooltip("탄창")]
+    [SerializeField] MagazineSocket magazineSocket;
+
     [Tooltip("탄약 소유 여부")]
     [SerializeField] bool hasAmmo;
     //[Tooltip("최대 소유 가능 탄약 개수")]
@@ -48,10 +51,6 @@ public class Gun : MonoBehaviour
     [Header("UI")]
 
     TMPro.TextMeshPro text; // 탄약 개수 표시 UI
-    AudioClip fireSound; // 총알 발사 소리
-
-    //[Tooltip("")]
-    //[SerializeField] float fireRate;
 
     [Space(20)]
     [Header("이펙트 / 사운드")]
@@ -61,10 +60,11 @@ public class Gun : MonoBehaviour
     [Tooltip("피격 위치 이펙트")]
     [SerializeField] PooledObject hitEffectPrefab;
 
+    AudioClip fireSound; // 총알 발사 소리
+
 
     private void Start()
     {
-        //Manager.Pool.CreatePool(hitEffectPrefab, 5, 5);  // 현재 씬 스크립트에 있음
         if (weaponType == WeaponType.Pistol)
         {
             fireRate = 0;

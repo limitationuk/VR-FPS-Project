@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3166381328053872452
+--- !u!1 &588567726814959739
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1411882925856524166}
+  - component: {fileID: 1558105051984260915}
   m_Layer: 0
   m_Name: Attach
   m_TagString: Untagged
@@ -16,13 +16,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1411882925856524166
+--- !u!4 &1558105051984260915
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3166381328053872452}
+  m_GameObject: {fileID: 588567726814959739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 127669585630530804}
   - component: {fileID: 211032633007625994}
-  - component: {fileID: 3226312678888701748}
   - component: {fileID: 451298201466078615}
   m_Layer: 0
   m_Name: PistolMagazine
@@ -63,8 +62,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 526545532999081163}
-  - {fileID: 1411882925856524166}
+  - {fileID: 4174135432032914075}
+  - {fileID: 1558105051984260915}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &211032633007625994
@@ -90,22 +89,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3226312678888701748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4680440866964521985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d79af5f66d2a29f44ac40393339923d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &451298201466078615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +245,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!1001 &5095098815905848437
+--- !u!1001 &4583445559071998863
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -266,57 +253,87 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 127669585630530804}
     m_Modifications:
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 459511542989030564, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
+      propertyPath: m_Name
+      value: PistolMagazineModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.009361565
       objectReference: {fileID: 0}
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.00000006293407
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
+    - target: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7291860554986912209, guid: e059e34c21402114d924c028d53d7675, type: 3}
-      propertyPath: m_Name
-      value: PistolMagazineModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e059e34c21402114d924c028d53d7675, type: 3}
---- !u!4 &526545532999081163 stripped
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 459511542989030564, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6598510337046494545}
+  m_SourcePrefab: {fileID: 100100000, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
+--- !u!4 &4174135432032914075 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4754612907531976894, guid: e059e34c21402114d924c028d53d7675, type: 3}
-  m_PrefabInstance: {fileID: 5095098815905848437}
+  m_CorrespondingSourceObject: {fileID: 465605228283398420, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
+  m_PrefabInstance: {fileID: 4583445559071998863}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4177977214297016107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 459511542989030564, guid: 7f00c33a16628d7448af7b68e8eb0fc6, type: 3}
+  m_PrefabInstance: {fileID: 4583445559071998863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6598510337046494545
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177977214297016107}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 4021ae645c4844a41ae19c303a8ad695, type: 3}

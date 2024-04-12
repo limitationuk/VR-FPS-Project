@@ -21,7 +21,6 @@ public class RightGraber : MonoBehaviour
     [SerializeField] bool socketTrigger;
 
 
-
     public XRInteractionManager Manager => manager;
     public IXRSelectInteractor DirectInteractor { get => directInteractor; set => directInteractor = value; } 
     public IXRSelectInteractor SocketInteractor { get => socketInteractor; set => socketInteractor = value; }
@@ -61,7 +60,6 @@ public class RightGraber : MonoBehaviour
 
     public void UnGrab(SelectExitEventArgs args)
     {
-
         IXRSelectInteractable interactable = args.interactableObject;
 
         if (SocketTrigger && !sceneChange)
@@ -86,8 +84,6 @@ public class RightGraber : MonoBehaviour
 
         }
 
-
-
         if (gunGrip && ((1 << interactable.interactionLayers) & (1 << InteractionLayerMask.GetMask("Gun"))) != 0)// (interactable.transform.gameObject.layer == InteractionLayerMask.NameToLayer("Gun"))
         {
             gunGrip = false;
@@ -98,5 +94,5 @@ public class RightGraber : MonoBehaviour
         }
     }
 
-    
+
 }
