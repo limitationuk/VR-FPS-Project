@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.ComponentModel;
 using UnityEngine;
@@ -17,49 +18,28 @@ public class Gun : MonoBehaviour
     [Tooltip("총 유형")]
     [SerializeField] WeaponType weaponType;
 
-    [Tooltip("총구 위치")]
-    [SerializeField] Transform muzzlePoint;
-    [Tooltip("최대 사거리")]
-    [SerializeField] float maxDistance;
-    [Tooltip("공격력")]
-    [SerializeField] int damage;
+    [Tooltip("총구 위치")]    [SerializeField] Transform muzzlePoint;
+    [Tooltip("최대 사거리")]  [SerializeField] float maxDistance;
+    [Tooltip("공격력")]       [SerializeField] int damage;
 
-    [Tooltip("사격 가능 여부")]
-    [SerializeField] bool isShootable;
-    [Tooltip("사격 쿨타임 (Rifle일 경우 0)")]
-    [SerializeField] float shootCoolTime;
-    [Tooltip("연사 속도 (Pistol일 경우 0)")]
-    [SerializeField] float fireRate;
+    [Tooltip("사격 가능 여부")]                [SerializeField][ReadOnly] bool isShootable;
+    [Tooltip("사격 쿨타임 [Rifle일 경우 0]")]  [SerializeField] float shootCoolTime;
+    [Tooltip("연사 속도 [Pistol일 경우 0]")]   [SerializeField] float fireRate;
 
-    [Tooltip("탄창")]
-    [SerializeField] MagazineSocket magazineSocket;
+    [Tooltip("탄창")]            [SerializeField] MagazineSocket magazineSocket;
+    [Tooltip("탄약 소유 여부")]  [SerializeField][ReadOnly] bool hasAmmo;
+    [Tooltip("최대 탄약 수")]    [SerializeField] int maxAmmo;
+    [Tooltip("현재 탄약 수")]    [SerializeField][ReadOnly] int currentAmmo;
+    [Tooltip("재장전 속도")]     [SerializeField] float reloadTime;
 
-    [Tooltip("탄약 소유 여부")]
-    [SerializeField] bool hasAmmo;
-    //[Tooltip("최대 소유 가능 탄약 개수")]
-    //[SerializeField] int maxAmmo;
-    //[Tooltip("현재 소유하고 있는 전체 탄약 개수")]
-    //[SerializeField] int carryAmmo;
-    [Tooltip("탄약 재장전 개수")]
-    [SerializeField] int reloadAmmo;
-    [Tooltip("현재 총에 남아있는 탄약 개수 (수정 불가능)")]
-    [SerializeField] int currentAmmo;
-    //[Tooltip("재장전 속도")]
-    //[SerializeField] float reloadTime;
-
-    [Space(20)]
-    [Header("UI")]
+    [Space(20)]  [Header("UI")]
 
     TMPro.TextMeshPro text; // 탄약 개수 표시 UI
 
-    [Space(20)]
-    [Header("이펙트 / 사운드")]
+    [Space(20)]  [Header("이펙트 / 사운드")]
 
-    [Tooltip("총구 섬광")]
-    [SerializeField] ParticleSystem muzzleFlash;
-    [Tooltip("피격 위치 이펙트")]
-    [SerializeField] PooledObject PistolHitEffectPrefab;
-    [SerializeField] PooledObject RifleHitEffectPrefab;
+    [Tooltip("총구 섬광")]    [SerializeField] ParticleSystem muzzleFlash;
+    [Tooltip("피격 이펙트")]  [SerializeField] PooledObject hitEffectPrefab;
 
     AudioClip fireSound; // 총알 발사 소리
 
@@ -69,14 +49,16 @@ public class Gun : MonoBehaviour
         if (weaponType == WeaponType.Pistol)
         {
             fireRate = 0;
-            RifleHitEffectPrefab = null;
+            maxAmmo = 12;
+            damage = 20;
         }
         else if (weaponType == WeaponType.Rifle)
         {
             shootCoolTime = 0;
-            PistolHitEffectPrefab = null;
+            maxAmmo = 35;
+            damage = 34;
         }
-        currentAmmo = reloadAmmo;
+        currentAmmo = maxAmmo;
         isShootable = true;
         hasAmmo = true;
     }
@@ -86,7 +68,9 @@ public class Gun : MonoBehaviour
         CheckAmmoCount();
         if (isShootable && hasAmmo)
         {
-            muzzleFlash.Play();  // 총구 파티클
+            if (weaponType == WeaponType.Pistol)
+                muzzleFlash.Play();
+
             bool isRay = Physics.Raycast(muzzlePoint.position, muzzlePoint.forward, out RaycastHit hitInfo, maxDistance);
 
             //hitInfo.distance  // 맞았을 때 Ray 쏜 거리
@@ -156,6 +140,7 @@ public class Gun : MonoBehaviour
         {
             Fire();
             yield return new WaitForSeconds(fireRate);
+            
         }
     }
 
@@ -165,12 +150,14 @@ public class Gun : MonoBehaviour
     public void ContinuousFireStart()
     {
         CheckAmmoCount();
+        muzzleFlash.Play();
         routine = StartCoroutine(ContinuousFireRoutine());
     }
 
     // 연사 중지
     public void ContinuousFireStop()
     {
+        muzzleFlash.Stop();
         StopCoroutine(routine);
     }
 
@@ -189,7 +176,7 @@ public class Gun : MonoBehaviour
 
     public void Reload()
     {
-        currentAmmo = reloadAmmo;
+        currentAmmo = maxAmmo;
     }
 
 }

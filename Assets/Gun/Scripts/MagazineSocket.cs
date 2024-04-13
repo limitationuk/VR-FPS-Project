@@ -46,7 +46,7 @@ public class MagazineSocket : MonoBehaviour
 
         curMagazine = GameObject.Find($"{curGun.name}Magazine"); // PistolMagazine (ÅºÃ¢ : ¹«±âÀÌ¸§+Magazine)
 
-        magazineCollider = curMagazine.GetComponentInChildren<Collider>(); // PistolMagazineModel (ÅºÃ¢¸ðµ¨)
+        magazineCollider = curMagazine.GetComponent<Collider>(); // PistolMagazineModel (ÅºÃ¢¸ðµ¨)
         Debug.Log($"111{magazineCollider}");
 
         socketInteractable = curMagazine.GetComponent<IXRSelectInteractable>(); // PistolMagazine (ÅºÃ¢)
