@@ -31,6 +31,7 @@ public class Gun : MonoBehaviour
     [Tooltip("¿¬»ç ¼Óµµ (PistolÀÏ °æ¿ì 0)")]
     [SerializeField] float fireRate;
 
+    [Tooltip("ÅºÃ¢")]
     [SerializeField] MagazineSocket magazineSocket;
 
     [Tooltip("Åº¾à ¼ÒÀ¯ ¿©ºÎ")]
@@ -50,10 +51,6 @@ public class Gun : MonoBehaviour
     [Header("UI")]
 
     TMPro.TextMeshPro text; // Åº¾à °³¼ö Ç¥½Ã UI
-    AudioClip fireSound; // ÃÑ¾Ë ¹ß»ç ¼Ò¸®
-
-    //[Tooltip("")]
-    //[SerializeField] float fireRate;
 
     [Space(20)]
     [Header("ÀÌÆåÆ® / »ç¿îµå")]
@@ -61,19 +58,23 @@ public class Gun : MonoBehaviour
     [Tooltip("ÃÑ±¸ ¼¶±¤")]
     [SerializeField] ParticleSystem muzzleFlash;
     [Tooltip("ÇÇ°Ý À§Ä¡ ÀÌÆåÆ®")]
-    [SerializeField] PooledObject hitEffectPrefab;
+    [SerializeField] PooledObject PistolHitEffectPrefab;
+    [SerializeField] PooledObject RifleHitEffectPrefab;
+
+    AudioClip fireSound; // ÃÑ¾Ë ¹ß»ç ¼Ò¸®
 
 
     private void Start()
     {
-        //Manager.Pool.CreatePool(hitEffectPrefab, 5, 5);  // ÇöÀç ¾À ½ºÅ©¸³Æ®¿¡ ÀÖÀ½
         if (weaponType == WeaponType.Pistol)
         {
             fireRate = 0;
+            RifleHitEffectPrefab = null;
         }
         else if (weaponType == WeaponType.Rifle)
         {
             shootCoolTime = 0;
+            PistolHitEffectPrefab = null;
         }
         currentAmmo = reloadAmmo;
         isShootable = true;
@@ -112,15 +113,17 @@ public class Gun : MonoBehaviour
                     enemy = hitInfo.collider.GetComponentInParent<Enemy>();
                     enemy.TakeDamage(damage);  // ÃÑÀÇ ±âº» damage Àû¿ë
                 }
+                Debug.Log("ÃÑ ½ô");
 
                 //ParticleSystem effect = Instantiate(hitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));  // ÃÑ¾ËÀÚ±¹ ÆÄÆ¼Å¬
                 PooledObject hitEffect = Manager.Pool.GetPool(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
                 hitEffect.transform.parent = hitInfo.transform;
+                Debug.Log(hitInfo.transform.name);
 
                 Rigidbody rigid = hitInfo.collider.GetComponent<Rigidbody>();
                 if (rigid != null)
                 {
-                    rigid.AddForceAtPosition(-hitInfo.normal * 1f, hitInfo.point, ForceMode.Impulse);  // ³Ë¹é
+                    rigid.AddForceAtPosition(-hitInfo.normal * 0f, hitInfo.point, ForceMode.Impulse);  // ³Ë¹é
                 }
             }
             else

@@ -802,6 +802,8 @@ MonoBehaviour:
   objectGrip: 0
   gunGrip: 0
   manager: {fileID: 3896267539290949988}
+  sceneChange: 0
+  socketTrigger: 0
 --- !u!1 &2417910313427958165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -954,6 +956,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectGrip: 0
   gunGrip: 0
+  manager: {fileID: 0}
+  sceneChange: 0
 --- !u!114 &7970953660998966675 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6397299583031462443, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}

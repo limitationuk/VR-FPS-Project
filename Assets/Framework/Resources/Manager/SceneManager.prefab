@@ -503,3 +503,5 @@ MonoBehaviour:
   fadeTime: 0.5
   fadeIn: {fileID: 0}
   fadeOut: {fileID: 0}
+  graber: {fileID: 0}
+  rightGraber: {fileID: 0}
