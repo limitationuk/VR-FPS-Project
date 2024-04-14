@@ -140,7 +140,6 @@ public class Gun : MonoBehaviour
         {
             Fire();
             yield return new WaitForSeconds(fireRate);
-            
         }
     }
 
