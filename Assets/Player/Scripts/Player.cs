@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         eye.SetActive(true);
+
         Move.SetActive(false);
         Teleport.SetActive(false);
         characterController.enabled = false;

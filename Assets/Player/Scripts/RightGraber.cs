@@ -47,6 +47,7 @@ public class RightGraber : MonoBehaviour
     {
         IXRSelectInteractable interactable = args.interactableObject;
         directInteractable = interactable;
+        Debug.Log(directInteractable);
 
         if (!gunGrip && ((1<<interactable.interactionLayers) & (1<<InteractionLayerMask.GetMask("Gun"))) != 0)//interactable.transform.gameObject.name == "Gun"
         {                        

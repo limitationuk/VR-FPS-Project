@@ -1553,6 +1553,14 @@ PrefabInstance:
       propertyPath: eye
       value: 
       objectReference: {fileID: 820021621}
+    - target: {fileID: 5421487101587652176, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916355016395963394, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8682326798186183623, guid: bd3bf19306c9999419c050e9e3abfc3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

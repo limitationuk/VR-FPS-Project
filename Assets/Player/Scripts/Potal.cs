@@ -9,7 +9,7 @@ public class Potal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (((1 << other.gameObject.layer) & LayerMask.GetMask("Player")) != 0)
+        if (((1 << other.gameObject.layer) & LayerMask.GetMask("Body")) != 0)
         {
             Manager.Scene.LoadScene(scenename);
         }
