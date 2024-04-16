@@ -8,11 +8,12 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 public class CameraDown : MonoBehaviour
 {
     [SerializeField] InputActionReference thumbInput;
-    [SerializeField] DynamicMoveProvider dynamicMoveProvider;
+    public DynamicMoveProvider dynamicMoveProvider;
     [SerializeField] Transform cameraPos;
     [SerializeField] Vector3 newPosition;
     [SerializeField] bool isDown;
     [SerializeField] bool isDie;
+    [SerializeField] Coroutine dieCoroutine;
 
 
     private void OnEnable()
@@ -38,12 +39,10 @@ public class CameraDown : MonoBehaviour
         
             if ((newPosition.y > 0.5f) && down == 1)
             {
-                dynamicMoveProvider.moveSpeed = 0.5f;
                 StartCoroutine(Down());
             }
             else if ((newPosition.y < 1.36144f) && down == 0)
             {
-                dynamicMoveProvider.moveSpeed = 1f;
                 StartCoroutine(UP());
             }
         }
@@ -63,7 +62,8 @@ public class CameraDown : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
 
             if (newPosition.y <= 0.5f)
-            {  
+            {
+                dynamicMoveProvider.moveSpeed = 1f;
                 newPosition.y = 0.5f;
                 break;
             }
@@ -77,7 +77,8 @@ public class CameraDown : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
 
             if (newPosition.y >= 1.36144f)
-            {     
+            {
+                dynamicMoveProvider.moveSpeed = 3f;
                 newPosition.y = 1.36144f;
                 break;
 
@@ -87,7 +88,12 @@ public class CameraDown : MonoBehaviour
 
     public void DieRoutineStart() 
     {
-        StartCoroutine(DieRoutine());
+        dieCoroutine = StartCoroutine(DieRoutine());
+    }
+
+    public void DieRoutineStop()
+    {
+        StopCoroutine(dieCoroutine);
     }
 
     IEnumerator DieRoutine()
@@ -96,7 +102,6 @@ public class CameraDown : MonoBehaviour
 
         while (true)
         {
-            Debug.Log("1");
             newPosition.y -= 0.02f;
             yield return new WaitForSecondsRealtime(0.02f);
 
@@ -118,8 +123,9 @@ public class CameraDown : MonoBehaviour
                             yield return new WaitForSecondsRealtime(0.02f);
                             if (newPosition.y <= 0.1f)
                             {
-                                yield return new WaitForSecondsRealtime(2f);
                                 isDie = false;
+                                DieRoutineStop();
+                                newPosition.y = 1.36144f;
                                 break;
                             }
                         }

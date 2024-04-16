@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage01(Scene02).unity
     guid: 4304b3c4c061fdf4693f71b5992ae852
+  - enabled: 1
+    path: Assets/Scenes/Saferoom1(Scene03).unity
+    guid: 35ec13dfc482edf45a054f9745b9e66f
+  - enabled: 1
+    path: Assets/Scenes/Stage02(Scene04).unity
+    guid: 584af37f4eff1e04e8ad0a0d9bebee53
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ad21aefb46e864b418dc9889dd70b477, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a6b32d58de66907449bafaac55aecf9c, type: 2}

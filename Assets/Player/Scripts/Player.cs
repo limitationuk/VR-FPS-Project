@@ -23,16 +23,31 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject Teleport;
     [SerializeField] CameraDown cameraDown;
     [SerializeField] CharacterController characterController;
+    [SerializeField] string curScene;
+    [SerializeField] Stage01Scene stage01Scene;
+    [SerializeField] Transform savePoint;
 
+    public string CurScene { get => curScene; set => curScene = value; }
 
     private void Update()
     {
         eye = GameObject.Find("ScreenEffect").transform.Find("Eye").gameObject;
+        stage01Scene = FindAnyObjectByType<Stage01Scene>();
+        if (stage01Scene != null)
+        {
+            savePoint = stage01Scene.GetComponent<Transform>();
+        }
+        
 
         if (0 < hp && hp < maxHp)
         {
             bloodScreen.color = new Color(1, 0, 0, 1f / hp);
-        } 
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            transform.position = savePoint.transform.position;
+        }
     }
 
     public void TakeDamage()
@@ -66,9 +81,11 @@ public class Player : MonoBehaviour
         eye.SetActive(true);
 
         Move.SetActive(false);
-        Teleport.SetActive(false);
-        characterController.enabled = false;
+        //characterController.enabled = false;
         cameraDown.DieRoutineStart();
+
+        StartCoroutine(DieSceneChange());
+       
     }
 
 
@@ -87,6 +104,13 @@ public class Player : MonoBehaviour
                 break;
             }
         }
-       
+    }
+
+    IEnumerator DieSceneChange()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Manager.Scene.LoadScene(curScene);
+        Move.SetActive(true);
+
     }
 }

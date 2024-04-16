@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
@@ -24,6 +25,7 @@ public class SceneManager : Singleton<SceneManager>
     {
         fadeIn = GameObject.Find("ScreenEffect").transform.Find("FadeIn").gameObject;
         fadeOut = GameObject.Find("ScreenEffect").transform.Find("FadeOut").gameObject;
+
         graber = GameObject.FindObjectOfType<Graber>();
         rightGraber = GameObject.FindObjectOfType<RightGraber>();
     }
@@ -57,8 +59,8 @@ public class SceneManager : Singleton<SceneManager>
         rightGraber.SceneChange = true;
 
         fadeIn.gameObject.SetActive(true);
-       fade.gameObject.SetActive(true);
-       yield return FadeOut();
+        fade.gameObject.SetActive(true);
+        yield return FadeOut();
 
         Manager.Pool.ClearPool();
         Manager.Sound.StopSFX();
@@ -84,10 +86,13 @@ public class SceneManager : Singleton<SceneManager>
        // loadingBar.gameObject.SetActive(false);
         Time.timeScale = 1f;
 
+
+
         if (rightGraber.DirectInteractable != null)
         {
             rightGraber.Manager.SelectEnter(rightGraber.DirectInteractor, rightGraber.DirectInteractable);
         }
+
         if (graber.DirectInteractable != null)
         {
             graber.Manager.SelectEnter(graber.DirectInteractor, graber.DirectInteractable);
@@ -99,15 +104,11 @@ public class SceneManager : Singleton<SceneManager>
 
 
 
-
         yield return FadeIn();
         fade.gameObject.SetActive(false);
         yield return null;
 
         
-
-       
-
         graber.SceneChange = false;
         rightGraber.SceneChange = false;
     }

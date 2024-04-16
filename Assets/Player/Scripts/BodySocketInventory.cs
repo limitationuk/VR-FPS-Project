@@ -15,8 +15,8 @@ public class BodySocketInventory : XRBaseControllerInteractor
 
 {
     [SerializeField] RightGraber rightGraber;
-    public GameObject HMD;
-    public bodySocket[] bodySockets;
+    [SerializeField] GameObject HMD;
+    [SerializeField] bodySocket[] bodySockets;
 
     private Vector3 _currentHMDlocalPosition;
     private Quaternion _currentHMDRotation;

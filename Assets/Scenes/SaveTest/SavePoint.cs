@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Potal : MonoBehaviour
+public class SavePoint : MonoBehaviour
 {
-
-    [SerializeField] string scenename;
-
+    [SerializeField] Stage01Scene spawn;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (((1 << other.gameObject.layer) & LayerMask.GetMask("Body")) != 0)
         {
-            Player player = other.GetComponentInChildren<Player>();
-            player.CurScene = scenename;
-            Manager.Scene.LoadScene(scenename);
+           
+            spawn = FindAnyObjectByType<Stage01Scene>();
+            spawn.transform.position = transform.position;
+            
         }
     }
+ 
 }
