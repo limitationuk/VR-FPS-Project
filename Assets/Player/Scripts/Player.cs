@@ -20,11 +20,9 @@ public class Player : MonoBehaviour
     [SerializeField] Coroutine coroutine;
     [SerializeField] GameObject eye;
     [SerializeField] GameObject Move;
-    [SerializeField] GameObject Teleport;
     [SerializeField] CameraDown cameraDown;
     [SerializeField] CharacterController characterController;
     [SerializeField] string curScene;
-    [SerializeField] Stage01Scene stage01Scene;
     [SerializeField] Transform savePoint;
 
     public string CurScene { get => curScene; set => curScene = value; }
@@ -32,11 +30,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         eye = GameObject.Find("ScreenEffect").transform.Find("Eye").gameObject;
-        stage01Scene = FindAnyObjectByType<Stage01Scene>();
-        if (stage01Scene != null)
-        {
-            savePoint = stage01Scene.GetComponent<Transform>();
-        }
+      
         
 
         if (0 < hp && hp < maxHp)
