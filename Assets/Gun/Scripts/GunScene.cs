@@ -8,6 +8,6 @@ public class GunScene : MonoBehaviour
 
     private void Start()
     {
-        Manager.Pool.CreatePool(hitEffectPrefab, 10, 10);
+        Manager.Pool.CreatePool(hitEffectPrefab, 20, 20);
     }
 }
