@@ -63,7 +63,7 @@ public class CameraDown : MonoBehaviour
 
             if (newPosition.y <= 0.5f)
             {
-                dynamicMoveProvider.moveSpeed = 1f;
+                dynamicMoveProvider.moveSpeed = 2f;
                 newPosition.y = 0.5f;
                 break;
             }
@@ -78,7 +78,7 @@ public class CameraDown : MonoBehaviour
 
             if (newPosition.y >= 1.36144f)
             {
-                dynamicMoveProvider.moveSpeed = 3f;
+                dynamicMoveProvider.moveSpeed = 4f;
                 newPosition.y = 1.36144f;
                 break;
 

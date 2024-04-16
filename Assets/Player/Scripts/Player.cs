@@ -38,10 +38,7 @@ public class Player : MonoBehaviour
             bloodScreen.color = new Color(1, 0, 0, 1f / hp);
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            transform.position = savePoint.transform.position;
-        }
+     
     }
 
     public void TakeDamage()

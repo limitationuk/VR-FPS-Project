@@ -19,15 +19,15 @@ public class TutorialMove : TutorialBase
                 blinkIndex = 0;
                 marksIndex = 0;
                 break;
-            case 3:
-                blinkIndex = 1;
+            case 4:
+                blinkIndex = 0;
                 marksIndex = 1;
                 break;
             default:
                 break;
         }
 
-        // modelToBlink 할당, ControllerModelBlink 활성화
+        // ControllerModelBlink 활성화
         controller.ControllerModelBlink.SetModelToBlink(blinkIndex);
         controller.ControllerModelBlink.enabled = true;
 

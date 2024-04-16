@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,7 +7,7 @@ public class EnemyState : MonoBehaviour
     public enum State { E_Idle, E_Shooting, E_Hit, E_Die, E_Chase, E_Patrol, E_Rotating }
 
     [SerializeField] float range;
-    [SerializeField] float angle; 
+    [SerializeField] float angle;
     [SerializeField] float eyeHeight;
     [SerializeField] int currentWayPointIndex = 0;
     [SerializeField] float waitTime;
@@ -17,13 +15,13 @@ public class EnemyState : MonoBehaviour
 
     [SerializeField] LayerMask targetMask;
     [SerializeField] LayerMask obstacleMask;
-  
-    
+
+
 
     [SerializeField] Animator animator;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform player;
-   
+
 
 
     public StateMachine<State> stateMachine;
@@ -34,8 +32,8 @@ public class EnemyState : MonoBehaviour
 
     public Animator Animator => animator;
     public List<Transform> WayPoints => wayPoints;
-    public NavMeshAgent Agent=>agent;
-    public Transform Player { get => player; set => player = value; } 
+    public NavMeshAgent Agent => agent;
+    public Transform Player { get => player; set => player = value; }
     public float WaitTime => waitTime;
     public int CurrentWayPointIndex { get => currentWayPointIndex; set => currentWayPointIndex = value; }
 
@@ -48,13 +46,13 @@ public class EnemyState : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-        void Start()
-    { 
+    void Start()
+    {
         stateMachine.AddState(State.E_Idle, new E_Idle(this));
         stateMachine.AddState(State.E_Shooting, new E_Shooting(this));
         stateMachine.AddState(State.E_Hit, new E_Hit(this));
         stateMachine.AddState(State.E_Die, new E_Die(this));
-        stateMachine.AddState(State.E_Chase, new E_Chase(this)); 
+        stateMachine.AddState(State.E_Chase, new E_Chase(this));
         stateMachine.AddState(State.E_Patrol, new E_Patrol(this));
         stateMachine.AddState(State.E_Rotating, new E_Rotating(this));
 
@@ -73,7 +71,7 @@ public class EnemyState : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
 
         Vector3 lookDir = AngleToDir(transform.eulerAngles.y);
-        Vector3 rightDir = AngleToDir(transform.eulerAngles.y+angle*0.5f);
+        Vector3 rightDir = AngleToDir(transform.eulerAngles.y + angle * 0.5f);
         Vector3 leftDir = AngleToDir(transform.eulerAngles.y - angle * 0.5f);
 
         Debug.DrawRay(transform.position, lookDir * range, Color.green);
@@ -81,7 +79,7 @@ public class EnemyState : MonoBehaviour
         Debug.DrawRay(transform.position, leftDir * range, Color.blue);
 
     }
-        
+
     public Vector3 AngleToDir(float angle)
     {
         float radian = angle * Mathf.Deg2Rad;
@@ -113,8 +111,8 @@ public class EnemyState : MonoBehaviour
                 Debug.DrawRay(eyePosition, dirToTarget * disToTarget, Color.red);
             }
         }
-            
-        
+
+
     }
 
 

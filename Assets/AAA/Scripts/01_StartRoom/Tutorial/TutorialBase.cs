@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class TutorialBase : MonoBehaviour
 {
-    [ReadOnly] public int blinkIndex;
-    [ReadOnly] public int marksIndex;
+    public int blinkIndex;
+    public int marksIndex;
 
     // 해당 튜토리얼 과정을 시작할 때 1회 호출
     public virtual void Enter(TutorialController controller)

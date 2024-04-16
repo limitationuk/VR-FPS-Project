@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using static EnemyState;
 
 public class E_Idle : EnemyStateData
-{   
+{
     [SerializeField] float timer;
     [SerializeField] bool patrolAfter;
     public E_Idle(EnemyState enemyState)
@@ -21,7 +18,7 @@ public class E_Idle : EnemyStateData
     public override void Update()
     {
         timer += Time.deltaTime;
-        
+
     }
 
     public override void Transition()
@@ -34,10 +31,10 @@ public class E_Idle : EnemyStateData
         else if (!patrolAfter && timer > enemyState.WaitTime)
         {
             ChangeState(EnemyState.State.E_Patrol);
-            patrolAfter=true;
+            patrolAfter = true;
         }
-            
-            
+
+
     }
 }
 

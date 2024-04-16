@@ -1,6 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
@@ -19,7 +17,7 @@ public class SceneManager : Singleton<SceneManager>
     private BaseScene curScene;
     private void Start()
     {
-       
+
     }
     private void Update()
     {
@@ -69,7 +67,7 @@ public class SceneManager : Singleton<SceneManager>
         Manager.UI.CloseInGameUI();
 
         Time.timeScale = 0f;
-       // loadingBar.gameObject.SetActive(true);
+        // loadingBar.gameObject.SetActive(true);
 
         AsyncOperation oper = UnitySceneManager.LoadSceneAsync(sceneName);
         while (oper.isDone == false)
@@ -83,7 +81,7 @@ public class SceneManager : Singleton<SceneManager>
         BaseScene curScene = GetCurScene();
         yield return curScene.LoadingRoutine();
 
-       // loadingBar.gameObject.SetActive(false);
+        // loadingBar.gameObject.SetActive(false);
         Time.timeScale = 1f;
 
 
@@ -108,7 +106,7 @@ public class SceneManager : Singleton<SceneManager>
         fade.gameObject.SetActive(false);
         yield return null;
 
-        
+
         graber.SceneChange = false;
         rightGraber.SceneChange = false;
     }

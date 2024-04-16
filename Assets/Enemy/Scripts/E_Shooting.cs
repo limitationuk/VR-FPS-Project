@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using static EnemyState;
 
@@ -32,7 +29,7 @@ public class E_Shooting : EnemyStateData
     }
     public override void Transition()
     {
-        if (distance > 15) 
+        if (distance > 15)
         {
             ChangeState(EnemyState.State.E_Chase);
         }

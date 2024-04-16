@@ -1,18 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class TutorialController : MonoBehaviour
 {
     [SerializeField] List<TutorialBase> tutorials;
-    [SerializeField][ReadOnly] TutorialBase currentTutorial;
-    [SerializeField][ReadOnly] int currentIndex;
+    [SerializeField] TutorialBase currentTutorial;
+    [SerializeField] int currentIndex;
 
     [SerializeField] ControllerModelBlink controllerModelBlink;
     [SerializeField] TutorialUI tutorialUI;
-    [SerializeField] StartRoomGun startRoomGun;
-    [SerializeField] GameObject mark;
-    [SerializeField][ReadOnly] GameObject[] marks;
+    [SerializeField] GameObject[] marks;
+    [SerializeField] GameObject targetArrow;
 
     public int GetIndex() { return currentIndex; }
     public int Index => GetIndex();
@@ -23,11 +21,11 @@ public class TutorialController : MonoBehaviour
     public TutorialUI GetTutorialUI() { return tutorialUI; }
     public TutorialUI TutorialUI => GetTutorialUI();
 
-    public StartRoomGun GetStartRoomGun() { return startRoomGun; }
-    public StartRoomGun StartRoomGun => GetStartRoomGun();
-    
     public GameObject[] GetMarks() { return marks; }
     public GameObject[] Marks => GetMarks();
+
+    public GameObject GetTargetArrow() { return targetArrow; }
+    public GameObject TargetArrow => GetTargetArrow();
 
 
     private void Start()
@@ -37,18 +35,17 @@ public class TutorialController : MonoBehaviour
         transform.SetParent(originCamera.transform);
 
         // ControllerModelBlink 비활성화
-        //controllerModelBlink = gameObject.GetComponentInChildren<ControllerModelBlink>();
+        controllerModelBlink = gameObject.GetComponentInChildren<ControllerModelBlink>();
         controllerModelBlink.enabled = false;
 
-        // StartRoomGun 비활성화
-        startRoomGun.gameObject.SetActive(false);
-
         // Mark 표시 비활성화
-        marks = mark.GetComponentsInChildren<GameObject>();
         for (int i = 0; i < marks.Length; i++)
         {
             marks[i].SetActive(false);
         }
+
+        // target 화살표 비활성화
+        targetArrow.SetActive(false);
 
         currentIndex = -1;
 
@@ -96,9 +93,10 @@ public class TutorialController : MonoBehaviour
 
     private void CompletedAllTutorials()
     {
-        currentTutorial = null;
+        //currentTutorial = null;
 
         // 행동 양식이 여러 종류가 되었을 때 코드 추가 작성
+        gameObject.SetActive(false);
 
         Debug.Log("Complete All");
     }

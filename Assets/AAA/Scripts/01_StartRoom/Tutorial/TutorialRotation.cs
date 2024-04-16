@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class TutorialRotation : TutorialBase
 {
     [SerializeField] InputActionAsset inputActionAsset;
-    [SerializeField][ReadOnly] bool isRotate;
-    [SerializeField][ReadOnly] int rotationCount = 0;
+    [SerializeField] bool isRotate;
+    [SerializeField] int rotationCount = 0;
 
     public override void Enter(TutorialController controller)
     {
@@ -13,7 +13,7 @@ public class TutorialRotation : TutorialBase
         base.Enter(controller);
 
         blinkIndex = 1;
-        // modelToBlink 할당, ControllerModelBlink 활성화
+        // ControllerModelBlink 활성화
         controller.ControllerModelBlink.SetModelToBlink(blinkIndex);
         controller.ControllerModelBlink.enabled = true;
     }
@@ -25,7 +25,7 @@ public class TutorialRotation : TutorialBase
         {
             rotationCount++;
         }
-        if (rotationCount >= 4)
+        if (rotationCount >= 2)
         {
             controller.SetNextTutorial();
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialGrip : TutorialBase
 {
-    RightGraber rightGraber;
+    [SerializeField] RightGraber rightGraber;
 
     public override void Enter(TutorialController controller)
     {
@@ -12,12 +12,9 @@ public class TutorialGrip : TutorialBase
         base.Enter(controller);
 
         blinkIndex = 2;
-        // modelToBlink 할당, ControllerModelBlink 활성화
+        // ControllerModelBlink 활성화
         controller.ControllerModelBlink.SetModelToBlink(blinkIndex);
         controller.ControllerModelBlink.enabled = true;
-
-        // 무기 오브젝트 활성화
-        controller.StartRoomGun.gameObject.SetActive(true);
     }
 
     public override void Excute(TutorialController controller)

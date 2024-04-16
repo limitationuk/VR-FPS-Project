@@ -41,7 +41,9 @@ public class Gun : MonoBehaviour
     [Tooltip("총구 섬광")]    [SerializeField] ParticleSystem muzzleFlash;
     [Tooltip("피격 이펙트")]  [SerializeField] PooledObject hitEffectPrefab;
 
-    AudioClip fireSound; // 총알 발사 소리
+    [SerializeField]  AudioClip fireSound; // 총알 발사 소리
+    [SerializeField] AudioClip rifleSound;
+    [SerializeField] bool isRifleSound;
 
 
     private void Start()
@@ -49,14 +51,14 @@ public class Gun : MonoBehaviour
         if (weaponType == WeaponType.Pistol)
         {
             fireRate = 0;
-            maxAmmo = 12;
+            maxAmmo = 1000;
             damage = 20;
         }
         else if (weaponType == WeaponType.Rifle)
         {
             shootCoolTime = 0;
-            maxAmmo = 35;
-            damage = 34;
+            maxAmmo = 2000;
+            damage = 15;
         }
         currentAmmo = maxAmmo;
         isShootable = true;
@@ -65,6 +67,18 @@ public class Gun : MonoBehaviour
 
     public void Fire()
     {
+        if (weaponType == WeaponType.Pistol)
+        {
+            Manager.Sound.PlaySFX(fireSound);
+        }
+        else if (!isRifleSound && weaponType == WeaponType.Rifle)
+        {
+            Manager.Sound.PlayBGM(rifleSound);
+            isRifleSound = true;
+        }
+       
+
+
         CheckAmmoCount();
         if (isShootable && hasAmmo)
         {
@@ -83,7 +97,6 @@ public class Gun : MonoBehaviour
                 Debug.DrawRay(muzzlePoint.position, muzzlePoint.forward * hitInfo.distance, Color.red, 0.3f);  // Ray 그려주기
 
                 Enemy enemy = hitInfo.collider.GetComponent<Enemy>();  // 적 컴포넌트 가져와서
-
                 // 머리 맞은 경우
                 if ((1 << hitInfo.collider.gameObject.layer) == LayerMask.GetMask("Head"))  // Layer6: Head (64 == 64)
                 {
@@ -156,6 +169,8 @@ public class Gun : MonoBehaviour
     // 연사 중지
     public void ContinuousFireStop()
     {
+        isRifleSound = false;
+        Manager.Sound.StopBGM();
         muzzleFlash.Stop();
         StopCoroutine(routine);
     }

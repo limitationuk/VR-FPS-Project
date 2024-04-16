@@ -14411,6 +14411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  enemyState: {fileID: 6127843969911770504}
+  animator: {fileID: 6864037761822820022}
 --- !u!1 &9189846142765149501
 GameObject:
   m_ObjectHideFlags: 0

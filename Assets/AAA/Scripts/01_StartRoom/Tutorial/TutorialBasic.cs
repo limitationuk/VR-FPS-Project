@@ -4,8 +4,7 @@ using UnityEngine;
 public class TutorialBasic : TutorialBase
 {
     [SerializeField] float messageCoolTime;
-    [SerializeField][ReadOnly] float currentTime;
-    [SerializeField][ReadOnly] bool isCompleted = false;
+    [SerializeField] bool isCompleted = false;
 
     public override void Enter(TutorialController controller)
     {
@@ -29,7 +28,7 @@ public class TutorialBasic : TutorialBase
 
     IEnumerator MessageRoutine()
     {
-        currentTime = 0;
+        float currentTime = 0;
 
         while (currentTime < messageCoolTime)
         {
