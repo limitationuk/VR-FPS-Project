@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour
     [Tooltip("탄창")]            [SerializeField] MagazineSocket magazineSocket;
     [Tooltip("탄약 소유 여부")]  [SerializeField][ReadOnly] bool hasAmmo;
     [Tooltip("최대 탄약 수")]    [SerializeField] int maxAmmo;
-    [Tooltip("현재 탄약 수")]    [SerializeField][ReadOnly] int currentAmmo;
+    [Tooltip("현재 탄약 수")]    [SerializeField] int currentAmmo;
     [Tooltip("재장전 속도")]     [SerializeField] float reloadTime;
 
     [Space(20)]  [Header("UI")]

@@ -14277,7 +14277,7 @@ GameObject:
   - component: {fileID: 6127843969911770504}
   - component: {fileID: 7575777383079763520}
   - component: {fileID: 7026024881331980160}
-  - component: {fileID: 9120849930575798536}
+  - component: {fileID: 7156713642463550453}
   m_Layer: 0
   m_Name: SkelMesh_Bodyguard_01
   m_TagString: Untagged
@@ -14398,7 +14398,7 @@ MonoBehaviour:
   maxDistance: 10
   shootFlash: {fileID: 6119699020852963555}
   enemyState: {fileID: 6127843969911770504}
---- !u!114 &9120849930575798536
+--- !u!114 &7156713642463550453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14407,12 +14407,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9080515460904007989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9018d8872fa72f46942d0c482ece350, type: 3}
+  m_Script: {fileID: 11500000, guid: 52e195976b039734085ea8a47ce2f9af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10000
-  enemyState: {fileID: 6127843969911770504}
-  animator: {fileID: 6864037761822820022}
+  hp: 100
 --- !u!1 &9189846142765149501
 GameObject:
   m_ObjectHideFlags: 0

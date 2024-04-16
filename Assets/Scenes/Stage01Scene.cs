@@ -5,8 +5,11 @@ using UnityEngine;
 public class Stage01Scene : BaseScene
 {
     [SerializeField] Transform playerPos;
+    [SerializeField] PooledObject hitEffectPrefab;
+   
     private void Start()
     {
+        Manager.Pool.CreatePool(hitEffectPrefab, 20, 20);
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         playerPos.transform.position = transform.position;
     }

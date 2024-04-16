@@ -9407,6 +9407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPos: {fileID: 0}
+  hitEffectPrefab: {fileID: -551698277770418249, guid: 69c4ab31364a7d04ca24b68b6ce3e4bf, type: 3}
 --- !u!4 &981934089
 Transform:
   m_ObjectHideFlags: 0

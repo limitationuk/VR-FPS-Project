@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078b2a579af4ece4cb04a92ef65d2978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropMagazineInput: {fileID: -7588222926074860965, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  socketInteractor: {fileID: 0}
+  dropMagazineInput: {fileID: 2706532138187947972, guid: 97f7a1d79db1c95498befda85822aea3, type: 3}
+  socketInteractor: {fileID: 5574059735587711734}
   rightGraber: {fileID: 0}
 --- !u!114 &5574059735587711734
 MonoBehaviour:
@@ -405,7 +405,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4
+    m_Bits: 2
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 6144670701761653436}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -625,7 +625,7 @@ Transform:
   m_GameObject: {fileID: 6733616397993950094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.047, z: 0}
+  m_LocalPosition: {x: 0, y: 0.047, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
